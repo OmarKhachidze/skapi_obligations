@@ -33,7 +33,7 @@ class MainScreen extends StatelessWidget {
         child: SvgPicture.asset(
           isSelected ? SvgAssets.homeEnabled : SvgAssets.homeDisabled,
           colorFilter: ColorFilter.mode(
-            isSelected ? theme.white! : theme.grayMedium!,
+            isSelected ? theme.white : theme.grayMedium,
             BlendMode.srcIn,
           ),
         ),
@@ -56,7 +56,7 @@ class MainScreen extends StatelessWidget {
             SvgPicture.asset(
               route.icon,
               colorFilter: ColorFilter.mode(
-                isSelected ? theme.primary! : theme.grayMedium!,
+                isSelected ? theme.primary : theme.grayMedium,
                 BlendMode.srcIn,
               ),
             ),
@@ -84,27 +84,34 @@ class MainScreen extends StatelessWidget {
 
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        height: navigationBarHeight,
-        backgroundColor: theme.white,
-        selectedIndex: currentIndex,
-        indicatorColor: Colors.transparent,
-        overlayColor: WidgetStateProperty.all(Colors.transparent),
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-        labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>((states) {
-          final isSelected = states.contains(WidgetState.selected);
-          return context.skapiTextStyles.tinyText.copyWith(
-            color: isSelected ? theme.primary : theme.grayDark,
-          );
-        }),
-        destinations: AppRoute.values.map((route) {
-          final isHome = route == AppRoute.home;
-          final isSelected = currentIndex == route.index;
-          return isHome
-              ? _buildHomeDestination(context, isSelected)
-              : _buildDestination(context, route);
-        }).toList(),
-        onDestinationSelected: _goBranch,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(color: context.skapiColors.grayLight, width: 1.0),
+          ),
+        ),
+        child: NavigationBar(
+          height: navigationBarHeight,
+          backgroundColor: theme.white,
+          selectedIndex: currentIndex,
+          indicatorColor: Colors.transparent,
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+          labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>((states) {
+            final isSelected = states.contains(WidgetState.selected);
+            return context.skapiTextStyles.tinyText.copyWith(
+              color: isSelected ? theme.primary : theme.grayDark,
+            );
+          }),
+          destinations: AppRoute.values.map((route) {
+            final isHome = route == AppRoute.home;
+            final isSelected = currentIndex == route.index;
+            return isHome
+                ? _buildHomeDestination(context, isSelected)
+                : _buildDestination(context, route);
+          }).toList(),
+          onDestinationSelected: _goBranch,
+        ),
       ),
     );
   }
