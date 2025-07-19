@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skapi_obligations/common/theme/skapi_colors.dart';
+import 'package:skapi_obligations/common/extension/theme_extension.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Text(
           'Home Screen',
           style: TextStyle(
-            color: Theme.of(context).extension<SkapiColors>()!.black,
+            color: context.skapiTheme.black,
           ),
         ),
       ),
