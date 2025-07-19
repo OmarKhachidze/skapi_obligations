@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:skapi_obligations/common/constants/app_constants.dart';
 import 'package:skapi_obligations/common/constants/svg_assets.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/common/widgets/buttons/appbar_button.dart';
@@ -21,28 +22,33 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      centerTitle: true,
-      elevation: 0,
-      actionsPadding: EdgeInsets.zero,
-      backgroundColor: context.skapiColors.white,
-      title: SvgPicture.asset(SvgAssets.logo),
-      actions: [
-        AppBarButton(
-          iconPath: SvgAssets.notifications,
-          onPress: onMenuPress,
-          margin: const EdgeInsets.only(right: 12.0),
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [getNavigationBarBoxShadow(context, const Offset(0, 4))],
+      ),
+      child: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        actionsPadding: EdgeInsets.zero,
+        backgroundColor: context.skapiColors.white,
+        title: SvgPicture.asset(SvgAssets.logo),
+        actions: [
+          AppBarButton(
+            iconPath: SvgAssets.notifications,
+            onPress: onMenuPress,
+            margin: const EdgeInsets.only(right: 12.0),
+          ),
+          AppBarButton(
+            margin: const EdgeInsets.only(right: 16.0),
+            iconPath: SvgAssets.liveHelp,
+            onPress: onHelpPress,
+          ),
+        ],
+        leading: AppBarButton(
+          margin: const EdgeInsets.only(left: 16.0),
+          iconPath: SvgAssets.menu,
+          onPress: onNotificationPress,
         ),
-        AppBarButton(
-          margin: const EdgeInsets.only(right: 16.0),
-          iconPath: SvgAssets.liveHelp,
-          onPress: onHelpPress,
-        ),
-      ],
-      leading: AppBarButton(
-        margin: const EdgeInsets.only(left: 16.0),
-        iconPath: SvgAssets.menu,
-        onPress: onNotificationPress,
       ),
     );
   }
