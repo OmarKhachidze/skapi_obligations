@@ -1,4 +1,37 @@
 {
   "@@locale": "en",
-  "skapi": "Skapi"
+
+  "@_COMMON_####################################################################################################": {},
+
+  "somethingWentWrong": "Something went wrong!",
+  "@somethingWentWrong": {
+    "description": "Error text when something went wrong"
+  },
+
+  "@_SCREENS_####################################################################################################": {},
+
+  "screenLabelNewLoan": "New Loan",
+  "@screenLabelNewLoan": {
+    "description": "Label used for navigation bar in New Loan screen."
+  },
+
+  "screenLabelLoans": "Loans",
+  "@screenLabelLoans": {
+    "description": "Label used for navigation bar in Loans screen."
+  },
+
+  "screenLabelHome": "Home",
+  "@screenLabelHome": {
+    "description": "Label used for navigation bar in Home screen."
+  },
+
+  "screenLabelTransactions": "Transactions",
+  "@screenLabelTransactions": {
+    "description": "Label used for navigation bar in Transaction screen."
+  },
+
+  "screenLabelCurrency": "Currency",
+  "@screenLabelCurrency": {
+    "description": "Label used for navigation bar in Currency screen."
+  }
 }

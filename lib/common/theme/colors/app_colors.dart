@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:skapi_obligations/common/theme/skapi_colors.dart';
+import 'package:skapi_obligations/common/theme/colors/skapi_colors.dart';
 
 SkapiColors lightSkapiColors = const SkapiColors(
   black: Color.fromRGBO(35, 31, 32, 1),

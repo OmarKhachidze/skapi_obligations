@@ -1,3 +1,14 @@
+import java.util.Properties
+
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        load(localPropertiesFile.inputStream())
+    }
+}
+
+val ndk: String = localProperties.getProperty("flutter.ndkVersion") ?: flutter.ndkVersion
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -8,7 +19,7 @@ plugins {
 android {
     namespace = "ge.omedia.skapi_obligations"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = ndk
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
