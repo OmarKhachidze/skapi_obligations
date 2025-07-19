@@ -1,4 +1,4 @@
-.PHONY: get build clean run analyze format test
+.PHONY: get clean run analyze lint-strict l10n
 
 # Install dependencies
 get:
@@ -19,6 +19,10 @@ analyze:
 # Run analyzer with warnings as errors
 lint-strict:
 	dart analyze --fatal-infos --fatal-warnings
+
+# Generate Flutter localization files from ARB files
+l10n:
+	flutter gen-l10n
 
 # Help message
 help:
