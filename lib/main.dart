@@ -1,8 +1,10 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:skapi_obligations/common/extension/localization_extension.dart';
 
 import 'common/theme/app_colors.dart';
 import 'home_screen.dart';
+import 'l10n/app_localizations/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +22,6 @@ class MyApp extends StatelessWidget {
         final lightColorScheme =
             lightDynamic?.harmonized() ??
             ColorScheme.fromSeed(seedColor: seedColor);
-
         final darkColorScheme =
             darkDynamic?.harmonized() ??
             ColorScheme.fromSeed(
@@ -28,7 +29,10 @@ class MyApp extends StatelessWidget {
               brightness: Brightness.dark,
             );
         return MaterialApp(
-          title: 'Skapi',
+          title: context.localization.skapi,
+          locale: AppLocalizations.supportedLocales.last,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           theme: ThemeData(
             colorScheme: lightColorScheme,
             extensions: [lightSkapiColors],
