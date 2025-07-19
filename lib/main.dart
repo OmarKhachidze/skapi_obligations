@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return DynamicColorBuilder(
       builder: (lightDynamic, darkDynamic) {
-        final seedColor = const Color.fromRGBO(217, 35, 41, 1);
+        const seedColor = Color.fromRGBO(217, 35, 41, 1);
 
         final lightColorScheme =
             lightDynamic?.harmonized() ??
