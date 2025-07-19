@@ -86,6 +86,7 @@ class MainScreen extends StatelessWidget {
       body: navigationShell,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
+          boxShadow: [getNavigationBarBoxShadow(context, const Offset(0, -4))],
           border: Border(
             top: BorderSide(color: context.skapiColors.grayLight, width: 1.0),
           ),
