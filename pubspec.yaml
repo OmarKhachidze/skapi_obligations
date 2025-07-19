@@ -15,7 +15,8 @@ dependencies:
   dynamic_color: ^1.7.0
   flutter_localization: ^0.3.3
   intl: ^0.20.2
-
+  go_router: ^16.0.0
+  flutter_svg: ^2.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -25,3 +26,12 @@ dev_dependencies:
 flutter:
   generate: true
   uses-material-design: true
+  assets:
+    - assets/navigation/
+  fonts:
+    - family: HelveticaNeue
+      fonts:
+        - asset: assets/fonts/HelveticaNeue-Medium.otf
+          weight: 500
+        - asset: assets/fonts/HelveticaNeue-Roman.otf
+          weight: 400

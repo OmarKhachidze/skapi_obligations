@@ -1,9 +1,9 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
-import 'package:skapi_obligations/common/extension/localization_extension.dart';
+import 'package:skapi_obligations/common/theme/text_style/app_text_styles.dart';
+import 'package:skapi_obligations/router/router.dart';
 
-import 'common/theme/app_colors.dart';
-import 'home_screen.dart';
+import 'common/theme/colors/app_colors.dart';
 import 'l10n/app_localizations/app_localizations.dart';
 
 void main() {
@@ -28,20 +28,22 @@ class MyApp extends StatelessWidget {
               seedColor: seedColor,
               brightness: Brightness.dark,
             );
-        return MaterialApp(
-          title: context.localization.skapi,
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          routeInformationProvider: MainRouter.router.routeInformationProvider,
+          routeInformationParser: MainRouter.router.routeInformationParser,
+          routerDelegate: MainRouter.router.routerDelegate,
           locale: AppLocalizations.supportedLocales.last,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           theme: ThemeData(
             colorScheme: lightColorScheme,
-            extensions: [lightSkapiColors],
+            extensions: [lightSkapiColors, skapiTextStyles],
           ),
           darkTheme: ThemeData(
             colorScheme: darkColorScheme,
-            extensions: [darkSkapiColors],
+            extensions: [darkSkapiColors, skapiTextStyles],
           ),
-          home: const HomeScreen(),
         );
       },
     );
