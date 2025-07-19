@@ -14,10 +14,13 @@ class _EmptyScreenState extends State<EmptyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.skapiColors.grayLight,
       body: Center(
         child: Text(
           widget.title,
-          style: context.skapiTextStyles.bodyMedium,
+          style: context.skapiTextStyles.bodyMedium.copyWith(
+            color: context.skapiColors.black,
+          ),
         ),
       ),
     );

@@ -9,7 +9,7 @@ class ObligationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.skapiColors.grayDark,
+      backgroundColor: context.skapiColors.grayLight,
       appBar: HomeAppBar(
         onMenuPress: () {},
         onHelpPress: () {},
