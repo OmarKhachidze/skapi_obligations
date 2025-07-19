@@ -6,7 +6,7 @@ import 'package:skapi_obligations/common/extension/route_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/router/app_route.dart';
 
-import '../common/constants/app_constants.dart';
+import '../constants/app_constants.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({required this.navigationShell, Key? key})

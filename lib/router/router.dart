@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/route_extension.dart';
-import 'package:skapi_obligations/screen/empty_screen.dart';
-import 'package:skapi_obligations/screen/main_screen.dart';
+import 'package:skapi_obligations/common/screens/empty_screen.dart';
+import 'package:skapi_obligations/common/screens/main_screen.dart';
+import 'package:skapi_obligations/features/obligations/presentation/obligation_screen.dart';
 
 import 'app_route.dart';
 
@@ -55,9 +56,8 @@ class MainRouter {
             routes: <RouteBase>[
               GoRoute(
                 path: AppRoute.home.path,
-                pageBuilder: (context, state) => NoTransitionPage(
-                  child: EmptyScreen(title: AppRoute.home.label(context)),
-                ),
+                pageBuilder: (context, state) =>
+                    const NoTransitionPage(child: ObligationScreen()),
               ),
             ],
           ),
