@@ -122,5 +122,10 @@
   "paymentDetailsBeforePaymentInfoNumber": "2 300 300",
   "@paymentDetailsBeforePaymentInfoNumber": {
     "description": "Mobile number text used for payment details before payment info section."
+  },
+
+  "paymentDetailsPayDescription": "Please note that loan amounts will be repaid in order of priority.",
+  "@paymentDetailsPayDescription": {
+    "description": "Description for pay bottom sheet in payment screen."
   }
 }
