@@ -53,13 +53,14 @@ class MainScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              route.icon,
-              colorFilter: ColorFilter.mode(
-                isSelected ? theme.primary : theme.grayMedium,
-                BlendMode.srcIn,
+            if (route.icon != null)
+              SvgPicture.asset(
+                route.icon!,
+                colorFilter: ColorFilter.mode(
+                  isSelected ? theme.primary : theme.grayMedium,
+                  BlendMode.srcIn,
+                ),
               ),
-            ),
             Expanded(
               child: Text(
                 route.label(context),
@@ -104,7 +105,7 @@ class MainScreen extends StatelessWidget {
               color: isSelected ? theme.primary : theme.grayDark,
             );
           }),
-          destinations: AppRoute.values.map((route) {
+          destinations: AppRoute.values.where((e) => e.main).map((route) {
             final isHome = route == AppRoute.home;
             final isSelected = currentIndex == route.index;
             return isHome

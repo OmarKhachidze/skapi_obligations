@@ -16,10 +16,12 @@ extension RouteExtension on AppRoute {
         return context.localization.navigationLabelTransactions;
       case AppRoute.currency:
         return context.localization.navigationLabelCurrency;
+      case AppRoute.payment:
+        return context.localization.paymentDetailsDebtPayment;
     }
   }
 
-  String get icon {
+  String? get icon {
     switch (this) {
       case AppRoute.home:
         return SvgAssets.homeEnabled;
@@ -31,6 +33,8 @@ extension RouteExtension on AppRoute {
         return SvgAssets.transfers;
       case AppRoute.currency:
         return SvgAssets.currency;
+      default:
+        return null;
     }
   }
 }
