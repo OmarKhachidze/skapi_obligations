@@ -55,5 +55,20 @@
   "obligationsAvailableAmountDescription": "It is a well-known fact that the readable content of a page can attract the reader's attention and interfere with the perception of the design.",
   "@obligationsAvailableAmountDescription": {
     "description": "Description used for available amount section in obligations screen."
+  },
+
+  "obligationsUpcomingPayments": "მოახლოებული გადასახადები",
+  "@obligationsUpcomingPayments": {
+    "description": "Label used for upcoming payments section in obligations screen."
+  },
+
+  "obligationsUpcomingPaymentsPayment": "Payment",
+  "@obligationsUpcomingPaymentsPayment": {
+    "description": "Label used for upcoming payments items section in obligations screen."
+  },
+
+  "obligationsUpcomingPaymentsPass": "Pass",
+  "@obligationsUpcomingPaymentsPass": {
+    "description": "Label used for upcoming payments items section in obligations screen."
   }
 }

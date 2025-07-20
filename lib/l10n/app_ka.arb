@@ -55,5 +55,20 @@
   "obligationsAvailableAmountDescription": "ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს.",
   "@obligationsAvailableAmountDescription": {
     "description": "Description used for available amount section in obligations screen."
+  },
+
+  "obligationsUpcomingPayments": "მოახლოებული გადასახადები",
+  "@obligationsUpcomingPayments": {
+    "description": "Label used for upcoming payments section in obligations screen."
+  },
+
+  "obligationsUpcomingPaymentsPayment": "გადახდა",
+  "@obligationsUpcomingPaymentsPayment": {
+    "description": "Label used for upcoming payments items section in obligations screen."
+  },
+
+  "obligationsUpcomingPaymentsPass": "გადაცილება",
+  "@obligationsUpcomingPaymentsPass": {
+    "description": "Label used for upcoming payments items section in obligations screen."
   }
 }
