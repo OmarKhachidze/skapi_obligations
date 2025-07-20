@@ -45,5 +45,15 @@
   "obligationsMyObligations": "ჩემი ვალდებულებები",
   "@obligationsMyObligations": {
     "description": "Label used for my obligations section in obligations screen."
+  },
+
+  "obligationsAvailableAmount": "ხელმისაწვდომი თანხა",
+  "@obligationsAvailableAmount": {
+    "description": "Label used for available amount section in obligations screen."
+  },
+
+  "obligationsAvailableAmountDescription": "ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს.",
+  "@obligationsAvailableAmountDescription": {
+    "description": "Description used for available amount section in obligations screen."
   }
 }
