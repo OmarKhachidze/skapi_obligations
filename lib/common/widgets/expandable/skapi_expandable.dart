@@ -70,31 +70,28 @@ class _SkapiExpandableState extends State<SkapiExpandable>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 16.0),
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: _toggleExpanded,
-            child: ExpandableHeader(
-              expanded: _isExpanded,
-              iconPath: widget.iconPath,
-              label: widget.label,
-              subLabel: widget.subLabel,
-              days: widget.days,
-              amount: widget.amount,
-            ),
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: _toggleExpanded,
+          child: ExpandableHeader(
+            expanded: _isExpanded,
+            iconPath: widget.iconPath,
+            label: widget.label,
+            subLabel: widget.subLabel,
+            days: widget.days,
+            amount: widget.amount,
           ),
-          SizeTransition(
-            sizeFactor: _controller,
-            axisAlignment: 1.0, // collapses upwards when hiding
-            child: SlideTransition(
-              position: _slideAnimation,
-              child: widget.child,
-            ),
+        ),
+        SizeTransition(
+          sizeFactor: _controller,
+          axisAlignment: 1.0, // collapses upwards when hiding
+          child: SlideTransition(
+            position: _slideAnimation,
+            child: widget.child,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

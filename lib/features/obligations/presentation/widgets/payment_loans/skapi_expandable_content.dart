@@ -8,14 +8,16 @@ class SkapiExpandableContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: context.skapiColors.grayLight),
+      decoration: BoxDecoration(
+        color: context.skapiColors.grayLight,
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
       child: const Column(
         spacing: 8,
         children: [
-          SkapiExpandableItem(label: 'ძირი:', amount: 10_558.29),
-          SkapiExpandableItem(label: 'პროცენტი:', amount: 10_558.29),
-          SkapiExpandableItem(label: 'ჯარიმა:', amount: 10_558.29),
+          SkapiExpandableItem(label: 'ძირი:', amount: 420.95),
+          SkapiExpandableItem(label: 'პროცენტი:', amount: 74.29),
+          SkapiExpandableItem(label: 'ჯარიმა:', amount: 45.29),
         ],
       ),
     );

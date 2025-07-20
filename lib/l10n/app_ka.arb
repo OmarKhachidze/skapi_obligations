@@ -122,6 +122,10 @@
   "paymentDetailsBeforePaymentInfoNumber": "2 300 300",
   "@paymentDetailsBeforePaymentInfoNumber": {
     "description": "Mobile number text used for payment details before payment info section."
-  }
+  },
 
+  "paymentDetailsPayDescription": "გაითვალისწინე, რომ სესხების თანხები დაიფარება პრიორიტეტის შესაბამისად",
+  "@paymentDetailsPayDescription": {
+    "description": "Description for pay bottom sheet in payment screen."
+  }
 }
