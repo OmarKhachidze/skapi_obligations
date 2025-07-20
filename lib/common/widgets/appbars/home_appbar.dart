@@ -31,9 +31,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         elevation: 0,
         actionsPadding: EdgeInsets.zero,
         backgroundColor: context.skapiColors.white,
-        shadowColor: context.skapiColors.white,
         surfaceTintColor: context.skapiColors.white,
-        foregroundColor: context.skapiColors.white,
         title: SvgPicture.asset(SvgAssets.logo),
         actions: [
           AppBarButton(

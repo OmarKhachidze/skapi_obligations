@@ -45,5 +45,15 @@
   "obligationsMyObligations": "My Obligations",
   "@obligationsMyObligations": {
     "description": "Label used for my obligations section in obligations screen."
+  },
+
+  "obligationsAvailableAmount": "Available Amount",
+  "@obligationsAvailableAmount": {
+    "description": "Label used for available amount section in obligations screen."
+  },
+
+  "obligationsAvailableAmountDescription": "It is a well-known fact that the readable content of a page can attract the reader's attention and interfere with the perception of the design.",
+  "@obligationsAvailableAmountDescription": {
+    "description": "Description used for available amount section in obligations screen."
   }
 }
