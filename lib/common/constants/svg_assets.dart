@@ -24,6 +24,7 @@ class SvgAssets {
   static const String notifications = '${_svgsPath}notifications.svg';
   static const String liveHelp = '${_svgsPath}live_help.svg';
   static const String arrowRight = '${_svgsPath}arrow_right.svg';
+  static const String arrowLeft = '${_svgsPath}arrow_left.svg';
   static const String exclamationMark = '${_svgsPath}exc_mark.svg';
   static const String listAlt = '${_svgsPath}list_alt.svg';
 }

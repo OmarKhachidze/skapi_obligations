@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:skapi_obligations/common/constants/svg_assets.dart';
+import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/common/widgets/money_text/money_text.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/upcoming_payment_section/upcoming_payment_icon.dart';
@@ -40,6 +41,9 @@ class UpcomingPaymentItem extends StatelessWidget {
               UpcomingPaymentIcon(iconPath: iconPath, hasPassed: hasPassed),
               const SizedBox(width: 10),
               UpcomingPaymentLabelPayDay(
+                subLabel: hasPassed
+                    ? context.localization.obligationsUpcomingPaymentsPass
+                    : context.localization.obligationsUpcomingPaymentsPayment,
                 label: label,
                 days: days,
                 hasPassed: hasPassed,

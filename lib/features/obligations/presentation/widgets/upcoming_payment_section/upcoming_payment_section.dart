@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/common/widgets/buttons/skapi_icon_button.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/upcoming_payment_section/upcoming_payment_item.dart';
+import 'package:skapi_obligations/router/app_route.dart';
 
 import '../../../../../common/constants/svg_assets.dart';
 
@@ -37,7 +39,9 @@ class UpcomingPaymentSection extends StatelessWidget {
             iconPath: SvgAssets.otherObligations,
             days: '2 დღეში',
             amount: 10_558.29,
-            onPress: () {},
+            onPress: () {
+              context.push('${AppRoute.home.path}/${AppRoute.payment.path}');
+            },
           ),
           UpcomingPaymentItem(
             label: 'ოქროს ლომბარდი',

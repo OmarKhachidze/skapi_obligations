@@ -13,6 +13,26 @@
     "description": "GEL currency symbol"
   },
 
+  "next": "შემდეგი",
+  "@next": {
+    "description": "Next label."
+  },
+
+  "chooseDebt": "დავალიანების არჩევა",
+  "@chooseDebt": {
+    "description": "Choose debt label."
+  },
+
+  "pay": "გადახდა",
+  "@pay": {
+    "description": "Pay label."
+  },
+
+  "close": "დახურვა",
+  "@close": {
+    "description": "Close label."
+  },
+
   "@_NAVIGATION_BAR_####################################################################################################": {},
 
   "navigationLabelNewLoan": "ახალი სესხი",
@@ -70,5 +90,28 @@
   "obligationsUpcomingPaymentsPass": "გადაცილება",
   "@obligationsUpcomingPaymentsPass": {
     "description": "Label used for upcoming payments items section in obligations screen."
+  },
+
+  "@_PAYMENT_DETAILS_SCREEN_####################################################################################################": {},
+
+  "paymentDetailsDebtPayment": "დავალიანების გადახდა",
+  "@paymentDetailsDebtPayment": {
+    "description": "Label used for payment details appbar screen."
+  },
+
+  "paymentDetailsBeforePayment": "სანამ გადაიხდი",
+  "@paymentDetailsBeforePayment": {
+    "description": "Label used for payment details before payment section."
+  },
+
+  "paymentDetailsBeforePaymentDescription": "გაეცანი და დაეთანხმე, როგორ გადანაწილდება შენ მიერ გადახდილი თანხა",
+  "@paymentDetailsBeforePaymentDescription": {
+    "description": "Description used for payment details before payment section."
+  },
+
+  "paymentDetailsBeforePaymentLastDate": "ბოლო ვადაა",
+  "@paymentDetailsBeforePaymentLastDate": {
+    "description": "Description used for payment details before payment section."
   }
+
 }

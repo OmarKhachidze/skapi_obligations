@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/available_amount_section/available_amount_section.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/my_obligations_section/my_obligations_section.dart';

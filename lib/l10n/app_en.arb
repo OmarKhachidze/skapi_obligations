@@ -13,6 +13,26 @@
     "description": "GEL currency symbol"
   },
 
+  "next": "Next",
+  "@next": {
+    "description": "Next label."
+  },
+
+  "chooseDebt": "Coose Debt",
+  "@chooseDebt": {
+    "description": "Choose debt label."
+  },
+
+  "pay": "Pay",
+  "@pay": {
+    "description": "Pay label."
+  },
+
+  "close": "Close",
+  "@close": {
+    "description": "Close label."
+  },
+
   "@_NAVIGATION_BAR_####################################################################################################": {},
 
   "navigationLabelNewLoan": "New Loan",
@@ -70,5 +90,27 @@
   "obligationsUpcomingPaymentsPass": "Pass",
   "@obligationsUpcomingPaymentsPass": {
     "description": "Label used for upcoming payments items section in obligations screen."
+  },
+
+  "@_PAYMENT_DETAILS_SCREEN_####################################################################################################": {},
+
+  "paymentDetailsDebtPayment": "Debt Payment",
+  "@paymentDetailsDebtPayment": {
+    "description": "Label used for payment details appbar screen."
+  },
+
+  "paymentDetailsBeforePayment": "Before Payment",
+  "@paymentDetailsBeforePayment": {
+    "description": "Label used for payment details before payment section."
+  },
+
+  "paymentDetailsBeforePaymentDescription": "Review and agree on how the amount you paid will be distributed.",
+  "@paymentDetailsBeforePaymentDescription": {
+    "description": "Description used for payment details before payment section."
+  },
+
+  "paymentDetailsBeforePaymentLastDate": "Last Date",
+  "@paymentDetailsBeforePaymentLastDate": {
+    "description": "Description used for payment details before payment section."
   }
 }
