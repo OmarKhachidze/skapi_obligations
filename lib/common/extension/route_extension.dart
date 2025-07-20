@@ -7,15 +7,15 @@ extension RouteExtension on AppRoute {
   String label(BuildContext context) {
     switch (this) {
       case AppRoute.newLoan:
-        return context.localization.screenLabelNewLoan;
+        return context.localization.navigationLabelNewLoan;
       case AppRoute.loans:
-        return context.localization.screenLabelLoans;
+        return context.localization.navigationLabelLoans;
       case AppRoute.home:
-        return context.localization.screenLabelHome;
+        return context.localization.navigationLabelHome;
       case AppRoute.transfers:
-        return context.localization.screenLabelTransactions;
+        return context.localization.navigationLabelTransactions;
       case AppRoute.currency:
-        return context.localization.screenLabelCurrency;
+        return context.localization.navigationLabelCurrency;
     }
   }
 

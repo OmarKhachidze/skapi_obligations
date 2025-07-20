@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 @immutable
 class SkapiTextStyles extends ThemeExtension<SkapiTextStyles> {
   const SkapiTextStyles({
@@ -14,6 +13,7 @@ class SkapiTextStyles extends ThemeExtension<SkapiTextStyles> {
     required this.buttonPrimary,
     required this.buttonSecondary,
     required this.tinyText,
+    required this.gel,
   });
 
   final TextStyle h1;
@@ -27,6 +27,7 @@ class SkapiTextStyles extends ThemeExtension<SkapiTextStyles> {
   final TextStyle buttonPrimary;
   final TextStyle buttonSecondary;
   final TextStyle tinyText;
+  final TextStyle gel;
 
   @override
   SkapiTextStyles copyWith({
@@ -41,6 +42,7 @@ class SkapiTextStyles extends ThemeExtension<SkapiTextStyles> {
     TextStyle? buttonPrimary,
     TextStyle? buttonSecondary,
     TextStyle? tinyText,
+    TextStyle? gel,
   }) {
     return SkapiTextStyles(
       h1: h1 ?? this.h1,
@@ -54,6 +56,7 @@ class SkapiTextStyles extends ThemeExtension<SkapiTextStyles> {
       buttonPrimary: buttonPrimary ?? this.buttonPrimary,
       buttonSecondary: buttonSecondary ?? this.buttonSecondary,
       tinyText: tinyText ?? this.tinyText,
+      gel: gel ?? this.gel,
     );
   }
 
@@ -72,6 +75,7 @@ class SkapiTextStyles extends ThemeExtension<SkapiTextStyles> {
       buttonPrimary: TextStyle.lerp(buttonPrimary, other.buttonPrimary, t) ?? buttonPrimary,
       buttonSecondary: TextStyle.lerp(buttonSecondary, other.buttonSecondary, t) ?? buttonSecondary,
       tinyText: TextStyle.lerp(tinyText, other.tinyText, t) ?? tinyText,
+      gel: TextStyle.lerp(gel, other.gel, t) ?? gel,
     );
   }
 
@@ -88,6 +92,7 @@ class SkapiTextStyles extends ThemeExtension<SkapiTextStyles> {
       buttonPrimary: buttonPrimary.copyWith(),
       buttonSecondary: buttonSecondary.copyWith(),
       tinyText: tinyText.copyWith(),
+      gel: gel.copyWith(),
     );
   }
 }

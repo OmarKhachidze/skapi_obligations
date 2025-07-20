@@ -8,30 +8,42 @@
     "description": "Error text when something went wrong"
   },
 
-  "@_SCREENS_####################################################################################################": {},
-
-  "screenLabelNewLoan": "New Loan",
-  "@screenLabelNewLoan": {
-    "description": "Label used for navigation bar in New Loan screen."
+  "currencyGel": "₾",
+  "@currencyGel": {
+    "description": "GEL currency symbol"
   },
 
-  "screenLabelLoans": "Loans",
-  "@screenLabelLoans": {
-    "description": "Label used for navigation bar in Loans screen."
+  "@_NAVIGATION_BAR_####################################################################################################": {},
+
+  "navigationLabelNewLoan": "New Loan",
+  "@navigationLabelNewLoan": {
+    "description": "Label used for navigation bar."
   },
 
-  "screenLabelHome": "Home",
-  "@screenLabelHome": {
-    "description": "Label used for navigation bar in Home screen."
+  "navigationLabelLoans": "Loans",
+  "@navigationLabelLoans": {
+    "description": "Label used for navigation bar."
   },
 
-  "screenLabelTransactions": "Transactions",
-  "@screenLabelTransactions": {
-    "description": "Label used for navigation bar in Transaction screen."
+  "navigationLabelHome": "Home",
+  "@navigationLabelHome": {
+    "description": "Label used for navigation bar."
   },
 
-  "screenLabelCurrency": "Currency",
-  "@screenLabelCurrency": {
-    "description": "Label used for navigation bar in Currency screen."
+  "navigationLabelTransactions": "Transactions",
+  "@navigationLabelTransactions": {
+    "description": "Label used for navigation bar."
+  },
+
+  "navigationLabelCurrency": "Currency",
+  "@navigationLabelCurrency": {
+    "description": "Label used for navigation bar."
+  },
+
+  "@_OBLIGATIONS_SCREEN_####################################################################################################": {},
+
+  "obligationsMyObligations": "My Obligations",
+  "@obligationsMyObligations": {
+    "description": "Label used for my obligations section in obligations screen."
   }
 }
