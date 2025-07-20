@@ -112,5 +112,15 @@
   "paymentDetailsBeforePaymentLastDate": "Last Date",
   "@paymentDetailsBeforePaymentLastDate": {
     "description": "Description used for payment details before payment section."
+  },
+
+  "paymentDetailsBeforePaymentInfoText": "To prepay your loan with a balance, call our contact center.",
+  "@paymentDetailsBeforePaymentInfoText": {
+    "description": "Description text used for payment details before payment info section."
+  },
+
+  "paymentDetailsBeforePaymentInfoNumber": "2 300 300",
+  "@paymentDetailsBeforePaymentInfoNumber": {
+    "description": "Mobile number text used for payment details before payment info section."
   }
 }
