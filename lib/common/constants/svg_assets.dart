@@ -27,4 +27,5 @@ class SvgAssets {
   static const String arrowLeft = '${_svgsPath}arrow_left.svg';
   static const String exclamationMark = '${_svgsPath}exc_mark.svg';
   static const String listAlt = '${_svgsPath}list_alt.svg';
+  static const String errorOutline = '${_svgsPath}error_outline.svg';
 }

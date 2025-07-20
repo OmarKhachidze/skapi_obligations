@@ -5,7 +5,9 @@ import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/common/widgets/appbars/inner_appbar.dart';
 import 'package:skapi_obligations/common/widgets/buttons/scaffold_button.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/before_payment_section/before_payment_section.dart';
+import 'package:skapi_obligations/features/obligations/presentation/widgets/payment_info_section/payment_info_text_section.dart';
 import 'package:skapi_obligations/router/app_route.dart';
+
 
 class PaymentDetailsScreen extends StatelessWidget {
   const PaymentDetailsScreen({super.key});
@@ -22,7 +24,9 @@ class PaymentDetailsScreen extends StatelessWidget {
         label: context.localization.pay,
         onPress: () {},
       ),
-      body: ListView(children: const [BeforePaymentSection()]),
+      body: ListView(
+        children: const [BeforePaymentSection(), PaymentInfoTextSection()],
+      ),
     );
   }
 }
