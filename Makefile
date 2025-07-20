@@ -1,4 +1,4 @@
-.PHONY: get clean run analyze lint-strict l10n
+.PHONY: get clean run analyze lint-strict l10n help
 
 # Install dependencies
 get:
@@ -27,11 +27,9 @@ l10n:
 # Help message
 help:
 	@echo "Available commands:"
-	@echo "  make get        - Install dependencies"
-	@echo "  make build      - Build the app"
-	@echo "  make clean      - Clean build artifacts"
-	@echo "  make run        - Run the app"
-	@echo "  make analyze    - Run Dart analyzer"
-	@echo "  make lint-strict- Analyze and treat warnings as errors"
-	@echo "  make format     - Format Dart code"
-	@echo "  make test       - Run tests"
+	@echo "  make get          - Install dependencies"
+	@echo "  make clean        - Clean build artifacts"
+	@echo "  make run          - Run the app on a connected device"
+	@echo "  make analyze      - Run Dart analyzer"
+	@echo "  make lint-strict  - Analyze and treat warnings as errors"
+	@echo "  make l10n         - Generate localization files from ARB"

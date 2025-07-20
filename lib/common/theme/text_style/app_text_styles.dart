@@ -80,4 +80,11 @@ SkapiTextStyles skapiTextStyles = const SkapiTextStyles(
     height: 20 / 12,
     letterSpacing: 0.1,
   ),
+  gel: TextStyle(
+    fontFamily: 'BpgGel',
+    fontWeight: FontWeight.w400,
+    fontSize: 20,
+    height: 32 / 20,
+    letterSpacing: 0.1,
+  ),
 );
