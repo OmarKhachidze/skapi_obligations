@@ -4,9 +4,11 @@ import 'package:skapi_obligations/common/theme/text_style/app_text_styles.dart';
 import 'package:skapi_obligations/router/router.dart';
 
 import 'common/theme/colors/app_colors.dart';
+import 'common/utils/network_client/dio_handler.dart';
 import 'l10n/app_localizations/app_localizations.dart';
 
 void main() {
+  DioHandler.setupDio();
   runApp(const MyApp());
 }
 

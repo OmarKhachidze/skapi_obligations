@@ -28,6 +28,19 @@
     "description": "Close label."
   },
 
+  "networkError": "Network connection error. Please check your internet connection.",
+  "@networkError": {
+    "description": "Error message shown when there is a network connection problem."
+  },
+  "timeoutError": "Connection timed out. Please try again later.",
+  "@timeoutError": {
+    "description": "Error message shown when the connection times out."
+  },
+  "unknownError": "An unexpected error occurred. Please try again.",
+  "@unknownError": {
+    "description": "Generic error message shown for unknown errors."
+  },
+
   "@_NAVIGATION_BAR_####################################################################################################": {},
 
   "navigationLabelNewLoan": "New Loan",

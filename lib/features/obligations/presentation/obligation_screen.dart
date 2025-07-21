@@ -14,7 +14,7 @@ class ObligationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.skapiColors.grayLight,
       appBar: HomeAppBar(
-        onMenuPress: () {},
+        onMenuPress: () async {},
         onHelpPress: () {},
         onNotificationPress: () {},
       ),
