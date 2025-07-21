@@ -18,16 +18,6 @@
     "description": "Next label."
   },
 
-  "chooseDebt": "დავალიანების არჩევა",
-  "@chooseDebt": {
-    "description": "Choose debt label."
-  },
-
-  "chooseWhatToPay": "აირჩიე რისი გადახდა გსურს",
-  "@chooseWhatToPay": {
-    "description": "Choose what to pay label."
-  },
-
   "pay": "გადახდა",
   "@pay": {
     "description": "Pay label."
@@ -132,6 +122,41 @@
   "paymentDetailsPayDescription": "გაითვალისწინე, რომ სესხების თანხები დაიფარება პრიორიტეტის შესაბამისად",
   "@paymentDetailsPayDescription": {
     "description": "Description for pay bottom sheet in payment screen."
+  },
+
+  "paymentDetailsChooseDebt": "დავალიანების არჩევა",
+  "@paymentDetailsChooseDebt": {
+    "description": "Choose debt label in payment screen bottom sheet."
+  },
+
+  "paymentDetailsChooseWhatToPay": "აირჩიე რისი გადახდა გსურს",
+  "@paymentDetailsChooseWhatToPay": {
+    "description": "Choose what to pay label in payment screen bottom sheet."
+  },
+
+  "paymentDetailsPaymentDate": "გადახდის თარიღი",
+  "@paymentDetailsPaymentDate": {
+    "description": "Payment date label in payment screen bottom sheet."
+  },
+
+  "paymentDetailsPaymentAmount": "გადასახდელი თანხა",
+  "@paymentDetailsPaymentAmount": {
+    "description": "Payment amount label in payment screen bottom sheet."
+  },
+
+  "paymentDetailsRoot": "ძირი",
+  "@paymentDetailsRoot": {
+    "description": "Root label in payment screen."
+  },
+
+  "paymentDetailsPercent": "პროცენტი",
+  "@paymentDetailsPercent": {
+    "description": "Percent label in payment screen."
+  },
+
+  "paymentDetailsFine": "ჯარიმა",
+  "@paymentDetailsFine": {
+    "description": "Fine label in payment screen."
   },
 
   "@_SUCCESS_SCREEN_####################################################################################################": {},
