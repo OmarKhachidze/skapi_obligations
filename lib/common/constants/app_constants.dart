@@ -18,6 +18,6 @@ BoxShadow getNavigationBarBoxShadow(BuildContext context, Offset offset) {
 const baseUrl = 'https://f1-mock.omedialab.com/api';
 const otherObligationsEndpoint = '/obligations/other';
 const goldObligationsEndpoint = '/obligations/gold';
-const obligationsTransactionsEndpoint = 'obligations/transactions';
+const obligationsTransactionsEndpoint = '/obligations/transactions';
 const connectTimeout = Duration(seconds: 20);
 const receiveTimeout = Duration(seconds: 15);

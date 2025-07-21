@@ -33,7 +33,8 @@ class PaymentDetailsScreen extends StatelessWidget {
             label: context.localization.pay,
             buttonLabel: context.localization.pay,
             onPress: () {
-              context.push(
+              context.pop();
+              context.replace(
                 '${AppRoute.home.path}/${AppRoute.payment.path}/${AppRoute.success.path}',
               );
             },

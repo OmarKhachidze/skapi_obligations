@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
@@ -87,11 +88,11 @@ class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
             },
           ),
           Padding(
-            padding: const EdgeInsetsGeometry.only(top: 4.0),
+            padding: const EdgeInsets.only(top: 4.0),
             child: SkapiIconButton(
               label: 'ამონაწერის მომზადება',
               iconPath: SvgAssets.listAlt,
-              onPress: () {},
+              onPress: () async {},
             ),
           ),
         ],
