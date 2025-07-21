@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:skapi_obligations/common/constants/app_constants.dart';
 
-import '../../../../common/utils/network_client/dio_handler.dart';
-
 class ObligationsRemoteDataSource {
-  final Dio _dio = getIt<DioHandler>().dio;
+  ObligationsRemoteDataSource(this._dio);
+
+  final Dio _dio;
 
   Future<Response> getOtherObligations() async {
     return _dio.get(otherObligationsEndpoint);

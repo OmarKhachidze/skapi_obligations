@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../../constants/app_constants.dart';
 
-final getIt = GetIt.instance;
-
 class DioHandler {
+  factory DioHandler() => _instance;
+
   DioHandler._internal()
     : dio = Dio(
         BaseOptions(
@@ -29,7 +28,5 @@ class DioHandler {
 
   final Dio dio;
 
-  static void setupDio() {
-    getIt.registerLazySingleton(() => DioHandler._internal());
-  }
+  static final DioHandler _instance = DioHandler._internal();
 }

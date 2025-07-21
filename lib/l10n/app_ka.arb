@@ -100,6 +100,16 @@
     "description": "Label used for upcoming payments items section in obligations screen."
   },
 
+  "obligationsUpcomingPdfPrepare": "ამონაწერის მომზადება",
+  "@obligationsUpcomingPdfPrepare": {
+    "description": "Label used for upcoming payments section button in obligations screen."
+  },
+
+  "obligationsUpcomingPdf": "ამონაწერი",
+  "@obligationsUpcomingPdf": {
+    "description": "Label used for upcoming payments pdf bottom sheet in obligations screen."
+  },
+
   "@_PAYMENT_DETAILS_SCREEN_####################################################################################################": {},
 
   "paymentDetailsDebtPayment": "დავალიანების გადახდა",
