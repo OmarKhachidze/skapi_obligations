@@ -28,6 +28,16 @@
     "description": "Close label."
   },
 
+  "days": "days",
+  "@days": {
+    "description": "Close label."
+  },
+
+  "day": "day",
+  "@day": {
+    "description": "Close label."
+  },
+
   "networkError": "Network connection error. Please check your internet connection.",
   "@networkError": {
     "description": "Error message shown when there is a network connection problem."
@@ -78,6 +88,16 @@
   "obligationsAvailableAmount": "Available Amount",
   "@obligationsAvailableAmount": {
     "description": "Label used for available amount section in obligations screen."
+  },
+
+  "obligationsOtherLoans": "Other Loans",
+  "@obligationsOtherLoans": {
+    "description": "Label used for upcoming loans items in obligations screen."
+  },
+
+  "obligationsGoldLoan": "Gold Loans",
+  "@obligationsGoldLoan": {
+    "description": "Label used for upcoming loans items in obligations screen."
   },
 
   "obligationsAvailableAmountDescription": "It is a well-known fact that the readable content of a page can attract the reader's attention and interfere with the perception of the design.",

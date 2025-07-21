@@ -28,6 +28,16 @@
     "description": "Close label."
   },
 
+  "days": "დღეში",
+  "@days": {
+    "description": "Close label."
+  },
+
+  "day": "დღე",
+  "@day": {
+    "description": "Close label."
+  },
+
   "networkError": "ქსელის კავშირის პრობლემა. გთხოვთ, შეამოწმოთ თქვენი ინტერნეტი.",
   "@networkError": {
     "description": "Error message shown when there is a network connection problem."
@@ -78,6 +88,16 @@
   "obligationsAvailableAmount": "ხელმისაწვდომი თანხა",
   "@obligationsAvailableAmount": {
     "description": "Label used for available amount section in obligations screen."
+  },
+
+  "obligationsOtherLoans": "სხვა სესხები",
+  "@obligationsOtherLoans": {
+    "description": "Label used for upcoming loans items in obligations screen."
+  },
+
+  "obligationsGoldLoan": "ოქროს ლომბარდი",
+  "@obligationsGoldLoan": {
+    "description": "Label used for upcoming loans items in obligations screen."
   },
 
   "obligationsAvailableAmountDescription": "ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს.",
