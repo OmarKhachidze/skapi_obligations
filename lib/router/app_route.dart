@@ -4,6 +4,7 @@ enum AppRoute {
   home('/home', true),
   transfers('/transfers', true),
   currency('/currency', true),
+  success('success'),
   payment('payment');
 
   const AppRoute(this.path, [this.main = false]);

@@ -127,5 +127,22 @@
   "paymentDetailsPayDescription": "Please note that loan amounts will be repaid in order of priority.",
   "@paymentDetailsPayDescription": {
     "description": "Description for pay bottom sheet in payment screen."
+  },
+
+  "@_SUCCESS_SCREEN_####################################################################################################": {},
+
+  "successPaymentSuccess": "Payment Successfull",
+  "@successPaymentSuccess": {
+    "description": "Title for success screen."
+  },
+
+  "successPaymentDescription": "You have successfully paid {amount} ₾ on your gold pawn loan.",
+  "@successPaymentDescription": {
+    "description": "Amount of money you payed",
+    "placeholders": {
+      "amount": {
+        "type": "Object"
+      }
+    }
   }
 }

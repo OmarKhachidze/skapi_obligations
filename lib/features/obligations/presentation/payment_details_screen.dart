@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skapi_obligations/common/constants/svg_assets.dart';
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/route_extension.dart';
@@ -30,8 +31,12 @@ class PaymentDetailsScreen extends StatelessWidget {
           DefaultBottomSheet(
             label: context.localization.pay,
             buttonLabel: context.localization.pay,
-            onPress: () {},
-            children: const PayContent(amount: 541.05)
+            onPress: () {
+              context.push(
+                '${AppRoute.home.path}/${AppRoute.payment.path}/${AppRoute.success.path}',
+              );
+            },
+            children: const PayContent(amount: 541.05),
           ).show(context);
         },
       ),

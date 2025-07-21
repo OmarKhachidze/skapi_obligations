@@ -18,6 +18,8 @@ extension RouteExtension on AppRoute {
         return context.localization.navigationLabelCurrency;
       case AppRoute.payment:
         return context.localization.paymentDetailsDebtPayment;
+      default:
+        return '';
     }
   }
 

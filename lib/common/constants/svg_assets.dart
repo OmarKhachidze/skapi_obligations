@@ -32,4 +32,5 @@ class SvgAssets {
   static const String listAlt = '${_svgsPath}list_alt.svg';
   static const String errorOutline = '${_svgsPath}error_outline.svg';
   static const String gelSymbol = '${_svgsPath}gel_symbol.svg';
+  static const String checkCircle = '${_svgsPath}check_circle.svg';
 }
