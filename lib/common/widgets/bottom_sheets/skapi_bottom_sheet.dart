@@ -11,12 +11,16 @@ class DefaultBottomSheet extends StatelessWidget {
     required this.label,
     required this.buttonLabel,
     required this.onPress,
+    this.buttonNotifier,
+    this.whenComplete,
   });
 
   final Widget children;
   final String label;
   final String buttonLabel;
   final VoidCallback onPress;
+  final ValueNotifier<bool>? buttonNotifier;
+  final VoidCallback? whenComplete;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +39,12 @@ class DefaultBottomSheet extends StatelessWidget {
               context.pop();
             },
           ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: children,
+          Padding(padding: const EdgeInsets.all(20.0), child: children),
+          ScaffoldButton(
+            label: buttonLabel,
+            onPress: onPress,
+            buttonNotifier: buttonNotifier,
           ),
-          ScaffoldButton(label: buttonLabel, onPress: onPress),
         ],
       ),
     );
@@ -52,6 +57,6 @@ class DefaultBottomSheet extends StatelessWidget {
       isScrollControlled: true,
       useSafeArea: true,
       builder: (context) => this,
-    );
+    ).whenComplete(() => whenComplete?.call());
   }
 }

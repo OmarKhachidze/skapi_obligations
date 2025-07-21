@@ -23,6 +23,11 @@
     "description": "Choose debt label."
   },
 
+  "chooseWhatToPay": "Choose what to pay",
+  "@chooseWhatToPay": {
+    "description": "Choose what to pay label."
+  },
+
   "pay": "Pay",
   "@pay": {
     "description": "Pay label."
