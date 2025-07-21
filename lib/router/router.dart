@@ -64,17 +64,38 @@ class MainRouter {
                   GoRoute(
                     path: AppRoute.payment.path,
                     parentNavigatorKey: _rootNavigatorKey,
-                    builder: (BuildContext context, GoRouterState state) {
+                    pageBuilder: (BuildContext context, GoRouterState state) {
                       final gold = state.extra ?? false;
-                      return PaymentDetailsScreen(goldObligation: gold as bool);
+                      return CustomTransitionPage(
+                        key: state.pageKey,
+                        child: PaymentDetailsScreen(
+                          goldObligation: gold as bool,
+                        ),
+                        transitionsBuilder: _slideRightToLeftTransition,
+                        transitionDuration: const Duration(milliseconds: 200),
+                        reverseTransitionDuration: const Duration(
+                          milliseconds: 200,
+                        ),
+                      );
                     },
                     routes: [
                       GoRoute(
                         path: AppRoute.success.path,
                         parentNavigatorKey: _rootNavigatorKey,
-                        builder: (BuildContext context, GoRouterState state) {
-                          return const SuccessScreen();
-                        },
+                        pageBuilder:
+                            (BuildContext context, GoRouterState state) {
+                              return CustomTransitionPage(
+                                key: state.pageKey,
+                                child: const SuccessScreen(),
+                                transitionsBuilder: _slideRightToLeftTransition,
+                                transitionDuration: const Duration(
+                                  milliseconds: 200,
+                                ),
+                                reverseTransitionDuration: const Duration(
+                                  milliseconds: 200,
+                                ),
+                              );
+                            },
                       ),
                     ],
                   ),
@@ -118,4 +139,18 @@ class MainRouter {
   );
 
   static GoRouter get router => _router;
+}
+
+Widget _slideRightToLeftTransition(
+  BuildContext context,
+  Animation<double> animation,
+  Animation<double> secondaryAnimation,
+  Widget child,
+) {
+  final offsetAnimation = Tween<Offset>(
+    begin: const Offset(1.0, 0.0),
+    end: Offset.zero,
+  ).animate(animation);
+
+  return SlideTransition(position: offsetAnimation, child: child);
 }

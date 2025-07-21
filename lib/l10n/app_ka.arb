@@ -28,6 +28,19 @@
     "description": "Close label."
   },
 
+  "networkError": "ქსელის კავშირის პრობლემა. გთხოვთ, შეამოწმოთ თქვენი ინტერნეტი.",
+  "@networkError": {
+    "description": "Error message shown when there is a network connection problem."
+  },
+  "timeoutError": "კავშირის დრო ამოიწურა. გთხოვთ, სცადეთ მოგვიანებით.",
+  "@timeoutError": {
+    "description": "Error message shown when the connection times out."
+  },
+  "unknownError": "მოხდა გაუთვალისწინებელი შეცდომა. გთხოვთ, სცადეთ ხელახლა.",
+  "@unknownError": {
+    "description": "Generic error message shown for unknown errors."
+  },
+
   "@_NAVIGATION_BAR_####################################################################################################": {},
 
   "navigationLabelNewLoan": "ახალი სესხი",
@@ -85,6 +98,16 @@
   "obligationsUpcomingPaymentsPass": "გადაცილება",
   "@obligationsUpcomingPaymentsPass": {
     "description": "Label used for upcoming payments items section in obligations screen."
+  },
+
+  "obligationsUpcomingPdfPrepare": "ამონაწერის მომზადება",
+  "@obligationsUpcomingPdfPrepare": {
+    "description": "Label used for upcoming payments section button in obligations screen."
+  },
+
+  "obligationsUpcomingPdf": "ამონაწერი",
+  "@obligationsUpcomingPdf": {
+    "description": "Label used for upcoming payments pdf bottom sheet in obligations screen."
   },
 
   "@_PAYMENT_DETAILS_SCREEN_####################################################################################################": {},

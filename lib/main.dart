@@ -1,12 +1,16 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skapi_obligations/common/theme/text_style/app_text_styles.dart';
 import 'package:skapi_obligations/router/router.dart';
 
+import 'common/di/service_locator.dart';
 import 'common/theme/colors/app_colors.dart';
+import 'features/obligations/presentation/bloc/obligations_bloc.dart';
 import 'l10n/app_localizations/app_localizations.dart';
 
 void main() {
+  setupLocator();
   runApp(const MyApp());
 }
 
@@ -28,21 +32,25 @@ class MyApp extends StatelessWidget {
               seedColor: seedColor,
               brightness: Brightness.dark,
             );
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          routeInformationProvider: MainRouter.router.routeInformationProvider,
-          routeInformationParser: MainRouter.router.routeInformationParser,
-          routerDelegate: MainRouter.router.routerDelegate,
-          locale: AppLocalizations.supportedLocales.last,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          theme: ThemeData(
-            colorScheme: lightColorScheme,
-            extensions: [lightSkapiColors, skapiTextStyles],
-          ),
-          darkTheme: ThemeData(
-            colorScheme: darkColorScheme,
-            extensions: [darkSkapiColors, skapiTextStyles],
+        return BlocProvider(
+          create: (_) => getIt<ObligationsBloc>(),
+          child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            routeInformationProvider:
+                MainRouter.router.routeInformationProvider,
+            routeInformationParser: MainRouter.router.routeInformationParser,
+            routerDelegate: MainRouter.router.routerDelegate,
+            locale: AppLocalizations.supportedLocales.last,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            theme: ThemeData(
+              colorScheme: lightColorScheme,
+              extensions: [lightSkapiColors, skapiTextStyles],
+            ),
+            darkTheme: ThemeData(
+              colorScheme: darkColorScheme,
+              extensions: [darkSkapiColors, skapiTextStyles],
+            ),
           ),
         );
       },

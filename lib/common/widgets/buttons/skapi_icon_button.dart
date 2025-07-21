@@ -7,20 +7,24 @@ class SkapiIconButton extends StatelessWidget {
     required this.label,
     required this.iconPath,
     required this.onPress,
+    this.loading = false,
     super.key,
   });
 
   final String label;
   final String iconPath;
   final VoidCallback onPress;
+  final bool loading;
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: context.skapiColors.primaryLight,
+      color: context.skapiColors.primaryLight.withValues(
+        alpha: !loading ? 1 : 0.48,
+      ),
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
-        onTap: onPress,
+        onTap: !loading ? onPress : null,
         splashColor: context.skapiColors.primaryDark.withValues(alpha: 0.2),
         highlightColor: context.skapiColors.primaryDark.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),

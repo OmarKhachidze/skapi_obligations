@@ -36,7 +36,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         actions: [
           AppBarButton(
             iconPath: SvgAssets.notifications,
-            onPress: onMenuPress,
+            onPress: onNotificationPress,
             margin: const EdgeInsets.only(right: 12.0),
           ),
           AppBarButton(
@@ -48,7 +48,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         leading: AppBarButton(
           margin: const EdgeInsets.only(left: 16.0),
           iconPath: SvgAssets.menu,
-          onPress: onNotificationPress,
+          onPress: onMenuPress,
         ),
       ),
     );
