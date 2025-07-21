@@ -3,13 +3,28 @@ import 'package:go_router/go_router.dart';
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/common/widgets/buttons/skapi_icon_button.dart';
+import 'package:skapi_obligations/common/widgets/radio_button/skapi_radio_button.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/upcoming_payment_section/upcoming_payment_item.dart';
 import 'package:skapi_obligations/router/app_route.dart';
 
 import '../../../../../common/constants/svg_assets.dart';
+import '../../../../../common/widgets/bottom_sheets/skapi_bottom_sheet.dart';
 
-class UpcomingPaymentSection extends StatelessWidget {
+class UpcomingPaymentSection extends StatefulWidget {
   const UpcomingPaymentSection({super.key});
+
+  @override
+  State<UpcomingPaymentSection> createState() => _UpcomingPaymentSectionState();
+}
+
+class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
+  final ValueNotifier<bool> _buttonNotifier = ValueNotifier(false);
+
+  @override
+  void dispose() {
+    _buttonNotifier.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +64,26 @@ class UpcomingPaymentSection extends StatelessWidget {
             days: '2 დღე',
             amount: 541.05,
             hasPassed: true,
-            onPress: () {},
+            onPress: () {
+              DefaultBottomSheet(
+                label: context.localization.chooseWhatToPay,
+                buttonLabel: context.localization.paymentDetailsDebtPayment,
+                buttonNotifier: _buttonNotifier,
+                onPress: () {
+                  context.pop();
+                  context.push(
+                    '${AppRoute.home.path}/${AppRoute.payment.path}',
+                  );
+                },
+                whenComplete: () => _buttonNotifier.value = false,
+                children: RadioExample(
+                  items: const ['a', 'b', 'c'],
+                  onChange: (item) {
+                    _buttonNotifier.value = true;
+                  },
+                ),
+              ).show(context);
+            },
           ),
           Padding(
             padding: const EdgeInsetsGeometry.only(top: 4.0),

@@ -23,6 +23,11 @@
     "description": "Choose debt label."
   },
 
+  "chooseWhatToPay": "აირჩიე რისი გადახდა გსურს",
+  "@chooseWhatToPay": {
+    "description": "Choose what to pay label."
+  },
+
   "pay": "გადახდა",
   "@pay": {
     "description": "Pay label."
