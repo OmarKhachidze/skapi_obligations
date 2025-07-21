@@ -127,5 +127,22 @@
   "paymentDetailsPayDescription": "გაითვალისწინე, რომ სესხების თანხები დაიფარება პრიორიტეტის შესაბამისად",
   "@paymentDetailsPayDescription": {
     "description": "Description for pay bottom sheet in payment screen."
+  },
+
+  "@_SUCCESS_SCREEN_####################################################################################################": {},
+
+  "successPaymentSuccess": "გადახდა შესრულებულია",
+  "@successPaymentSuccess": {
+    "description": "Title for success screen."
+  },
+
+  "successPaymentDescription": "შენ წარმატებით გადაიხადე {amount} ოქროს ლომბარდის სესხზე",
+  "@successPaymentDescription": {
+    "description": "Amount of money you payed",
+    "placeholders": {
+      "amount": {
+        "type": "Object"
+      }
+    }
   }
 }
