@@ -7,19 +7,27 @@ import 'package:skapi_obligations/common/extension/error_snackbar_extension.dart
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/common/widgets/buttons/skapi_icon_button.dart';
-import 'package:skapi_obligations/common/widgets/radio_button/skapi_radio_button.dart';
-import 'package:skapi_obligations/features/obligations/presentation/widgets/upcoming_payment_section/upcoming_payment_item.dart';
+import 'package:skapi_obligations/features/obligations/presentation/widgets/upcoming_payment_section/upcoming_payment_item_widget.dart';
 import 'package:skapi_obligations/router/app_route.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 import '../../../../../common/constants/svg_assets.dart';
 import '../../../../../common/widgets/bottom_sheets/skapi_bottom_sheet.dart';
+import '../../../../../common/widgets/radio_button/skapi_radio_button.dart';
+import '../../../domain/models/common_obligation/upcoming_payment_item.dart';
 import '../../bloc/obligation_event.dart';
 import '../../bloc/obligations_bloc.dart';
 import '../../bloc/obligations_state.dart';
 
 class UpcomingPaymentSection extends StatefulWidget {
-  const UpcomingPaymentSection({super.key});
+  const UpcomingPaymentSection({
+    super.key,
+    required this.otherUpcomingPayments,
+    required this.goldUpcomingPayments,
+  });
+
+  final List<UpcomingPaymentItem> otherUpcomingPayments;
+  final List<UpcomingPaymentItem> goldUpcomingPayments;
 
   @override
   State<UpcomingPaymentSection> createState() => _UpcomingPaymentSectionState();
@@ -48,6 +56,28 @@ class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
     ).show(context);
   }
 
+  void _openRadioBottomSheet() {
+    DefaultBottomSheet(
+      label: context.localization.paymentDetailsChooseWhatToPay,
+      buttonLabel: context.localization.paymentDetailsDebtPayment,
+      buttonNotifier: _buttonNotifier,
+      onPress: () {
+        context.pop();
+        context.push(
+          '${AppRoute.home.path}/${AppRoute.payment.path}',
+          extra: true,
+        );
+      },
+      whenComplete: () => _buttonNotifier.value = false,
+      children: SkapiRadioButton(
+        items: const [],
+        onChange: (item) {
+          _buttonNotifier.value = true;
+        },
+      ),
+    ).show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,42 +101,29 @@ class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
               ),
             ),
           ),
-          UpcomingPaymentItem(
-            label: 'სხვა სესხები',
-            iconPath: SvgAssets.otherObligations,
-            days: '2 დღეში',
-            amount: 10_558.29,
-            onPress: () {
-              context.push('${AppRoute.home.path}/${AppRoute.payment.path}');
-            },
+          ...widget.otherUpcomingPayments.map(
+            (e) => UpcomingPaymentItemWidget(
+              label: context.localization.obligationsOtherLoans,
+              iconPath: SvgAssets.otherObligations,
+              days: e.remainingDays,
+              amount: e.paymentAmount,
+              hasPassed: e.expired,
+              onPress: () {
+                context.push('${AppRoute.home.path}/${AppRoute.payment.path}');
+              },
+            ),
           ),
-          UpcomingPaymentItem(
-            label: 'ოქროს ლომბარდი',
-            iconPath: SvgAssets.goldObligations,
-            days: '2 დღე',
-            amount: 541.05,
-            hasPassed: true,
-            onPress: () {
-              DefaultBottomSheet(
-                label: context.localization.paymentDetailsChooseWhatToPay,
-                buttonLabel: context.localization.paymentDetailsDebtPayment,
-                buttonNotifier: _buttonNotifier,
-                onPress: () {
-                  context.pop();
-                  context.push(
-                    '${AppRoute.home.path}/${AppRoute.payment.path}',
-                    extra: true,
-                  );
-                },
-                whenComplete: () => _buttonNotifier.value = false,
-                children: RadioExample(
-                  items: const ['a', 'b', 'c'],
-                  onChange: (item) {
-                    _buttonNotifier.value = true;
-                  },
-                ),
-              ).show(context);
-            },
+          ...widget.goldUpcomingPayments.map(
+            (e) => UpcomingPaymentItemWidget(
+              label: context.localization.obligationsGoldLoan,
+              iconPath: SvgAssets.goldObligations,
+              days: e.remainingDays,
+              amount: e.paymentAmount,
+              hasPassed: e.expired,
+              onPress: () {
+                _openRadioBottomSheet();
+              },
+            ),
           ),
           BlocConsumer<ObligationsBloc, ObligationsData>(
             listener: (context, state) {

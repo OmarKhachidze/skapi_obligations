@@ -7,8 +7,8 @@ import 'package:skapi_obligations/common/widgets/money_text/money_text.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/upcoming_payment_section/upcoming_payment_icon.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/upcoming_payment_section/upcoming_payment_label_pay_day.dart';
 
-class UpcomingPaymentItem extends StatelessWidget {
-  const UpcomingPaymentItem({
+class UpcomingPaymentItemWidget extends StatelessWidget {
+  const UpcomingPaymentItemWidget({
     required this.label,
     required this.iconPath,
     required this.days,
@@ -20,7 +20,7 @@ class UpcomingPaymentItem extends StatelessWidget {
 
   final String label;
   final String iconPath;
-  final String days;
+  final int days;
   final double amount;
   final bool hasPassed;
   final VoidCallback onPress;
@@ -45,7 +45,8 @@ class UpcomingPaymentItem extends StatelessWidget {
                     ? context.localization.obligationsUpcomingPaymentsPass
                     : context.localization.obligationsUpcomingPaymentsPayment,
                 label: label,
-                days: days,
+                days:
+                    '$days ${hasPassed ? context.localization.day : context.localization.days}',
                 hasPassed: hasPassed,
               ),
               MoneyText(

@@ -3,17 +3,21 @@ import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/common/widgets/radio_button/skapi_radio_button_labels.dart';
 
-class RadioExample<T> extends StatefulWidget {
-  const RadioExample({super.key, required this.items, required this.onChange});
+class SkapiRadioButton<T> extends StatefulWidget {
+  const SkapiRadioButton({
+    super.key,
+    required this.items,
+    required this.onChange,
+  });
 
   final List<T> items;
   final ValueChanged<T> onChange;
 
   @override
-  State<RadioExample<T>> createState() => _RadioExampleState<T>();
+  State<SkapiRadioButton<T>> createState() => _SkapiRadioButtonState<T>();
 }
 
-class _RadioExampleState<T> extends State<RadioExample<T>> {
+class _SkapiRadioButtonState<T> extends State<SkapiRadioButton<T>> {
   final ValueNotifier<T?> _selectedItem = ValueNotifier(null);
 
   @override
@@ -73,7 +77,10 @@ class _RadioExampleState<T> extends State<RadioExample<T>> {
                       );
                     },
                   ),
-                  const SkapiRadioButtonLabels(label: 'ოქროს ლომბარდი', subLabel: 'გადახდა 2 დღეში'),
+                  const SkapiRadioButtonLabels(
+                    label: 'ოქროს ლომბარდი',
+                    subLabel: 'გადახდა 2 დღეში',
+                  ),
                   Text(
                     '541.05 ${context.localization.currencyGel}',
                     maxLines: 1,
