@@ -65,12 +65,10 @@ class MainRouter {
                     path: AppRoute.payment.path,
                     parentNavigatorKey: _rootNavigatorKey,
                     pageBuilder: (BuildContext context, GoRouterState state) {
-                      final gold = state.extra ?? false;
+                      final dynamic paymentData = state.extra;
                       return CustomTransitionPage(
                         key: state.pageKey,
-                        child: PaymentDetailsScreen(
-                          goldObligation: gold as bool,
-                        ),
+                        child: PaymentDetailsScreen(paymentData: paymentData),
                         transitionsBuilder: _slideRightToLeftTransition,
                         transitionDuration: const Duration(milliseconds: 200),
                         reverseTransitionDuration: const Duration(
@@ -84,9 +82,14 @@ class MainRouter {
                         parentNavigatorKey: _rootNavigatorKey,
                         pageBuilder:
                             (BuildContext context, GoRouterState state) {
+                              final description =
+                                  state.extra as (String, double);
                               return CustomTransitionPage(
                                 key: state.pageKey,
-                                child: const SuccessScreen(),
+                                child: SuccessScreen(
+                                  description: description.$1,
+                                  amount: description.$2,
+                                ),
                                 transitionsBuilder: _slideRightToLeftTransition,
                                 transitionDuration: const Duration(
                                   milliseconds: 200,

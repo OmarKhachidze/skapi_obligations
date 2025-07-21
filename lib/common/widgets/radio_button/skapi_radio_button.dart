@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/common/widgets/radio_button/skapi_radio_button_labels.dart';
+import 'package:skapi_obligations/features/obligations/domain/models/common_obligation/upcoming_payment_item.dart';
 
-class SkapiRadioButton<T> extends StatefulWidget {
+class SkapiRadioButton extends StatefulWidget {
   const SkapiRadioButton({
     super.key,
     required this.items,
     required this.onChange,
   });
 
-  final List<T> items;
-  final ValueChanged<T> onChange;
+  final List<UpcomingPaymentItem> items;
+  final ValueChanged<UpcomingPaymentItem> onChange;
 
   @override
-  State<SkapiRadioButton<T>> createState() => _SkapiRadioButtonState<T>();
+  State<SkapiRadioButton> createState() => _SkapiRadioButtonState();
 }
 
-class _SkapiRadioButtonState<T> extends State<SkapiRadioButton<T>> {
-  final ValueNotifier<T?> _selectedItem = ValueNotifier(null);
+class _SkapiRadioButtonState extends State<SkapiRadioButton> {
+  final ValueNotifier<UpcomingPaymentItem?> _selectedItem = ValueNotifier(null);
 
   @override
   void dispose() {
@@ -26,7 +27,7 @@ class _SkapiRadioButtonState<T> extends State<SkapiRadioButton<T>> {
     super.dispose();
   }
 
-  void _onItemChange(T item) {
+  void _onItemChange(UpcomingPaymentItem item) {
     _selectedItem.value = item;
     widget.onChange.call(item);
   }
@@ -58,7 +59,7 @@ class _SkapiRadioButtonState<T> extends State<SkapiRadioButton<T>> {
                   ValueListenableBuilder(
                     valueListenable: _selectedItem,
                     builder: (context, selectedItem, _) {
-                      return Radio<T>(
+                      return Radio<UpcomingPaymentItem>(
                         value: e,
                         fillColor: WidgetStateProperty.all(
                           context.skapiColors.primary,
@@ -70,19 +71,20 @@ class _SkapiRadioButtonState<T> extends State<SkapiRadioButton<T>> {
                           horizontal: -4,
                         ),
                         groupValue: selectedItem,
-                        onChanged: (T? value) {
+                        onChanged: (UpcomingPaymentItem? value) {
                           if (value == null) return;
                           _onItemChange(value);
                         },
                       );
                     },
                   ),
-                  const SkapiRadioButtonLabels(
-                    label: 'ოქროს ლომბარდი',
-                    subLabel: 'გადახდა 2 დღეში',
+                  SkapiRadioButtonLabels(
+                    label: context.localization.obligationsGoldLoan,
+                    day: e.remainingDays,
+                    hasPassed: e.expired,
                   ),
                   Text(
-                    '541.05 ${context.localization.currencyGel}',
+                    '${e.paymentAmount} ${context.localization.currencyGel}',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: context.skapiTextStyles.h4.copyWith(

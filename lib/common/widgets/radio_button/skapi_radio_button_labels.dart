@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 
 class SkapiRadioButtonLabels extends StatelessWidget {
   const SkapiRadioButtonLabels({
     super.key,
     required this.label,
-    required this.subLabel,
+    required this.day,
     this.hasPassed = false,
   });
 
   final String label;
-  final String subLabel;
+  final int day;
   final bool hasPassed;
 
   @override
@@ -29,7 +30,7 @@ class SkapiRadioButtonLabels extends StatelessWidget {
             ),
           ),
           Text(
-            subLabel,
+            '${hasPassed ? context.localization.obligationsUpcomingPaymentsPass : context.localization.obligationsUpcomingPaymentsPayment} $day ${hasPassed ? context.localization.day : context.localization.days}',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: context.skapiTextStyles.tinyText.copyWith(

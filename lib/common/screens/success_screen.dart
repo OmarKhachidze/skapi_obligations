@@ -12,7 +12,14 @@ import 'package:skapi_obligations/router/app_route.dart';
 import '../constants/svg_assets.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({super.key});
+  const SuccessScreen({
+    super.key,
+    required this.description,
+    required this.amount,
+  });
+
+  final String description;
+  final double amount;
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +69,7 @@ class SuccessScreen extends StatelessWidget {
                 color: context.skapiColors.black,
               ),
             ),
-            AmountText(
-              label: context.localization.successPaymentDescription(541.05),
-              amount: 541.05,
-            ),
+            AmountText(label: description, amount: amount),
           ],
         ),
       ),
