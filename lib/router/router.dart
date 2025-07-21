@@ -65,7 +65,8 @@ class MainRouter {
                     path: AppRoute.payment.path,
                     parentNavigatorKey: _rootNavigatorKey,
                     builder: (BuildContext context, GoRouterState state) {
-                      return const PaymentDetailsScreen();
+                      final gold = state.extra ?? false;
+                      return PaymentDetailsScreen(goldObligation: gold as bool);
                     },
                     routes: [
                       GoRoute(

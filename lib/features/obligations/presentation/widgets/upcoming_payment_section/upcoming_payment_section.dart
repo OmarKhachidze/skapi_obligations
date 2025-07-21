@@ -66,13 +66,14 @@ class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
             hasPassed: true,
             onPress: () {
               DefaultBottomSheet(
-                label: context.localization.chooseWhatToPay,
+                label: context.localization.paymentDetailsChooseWhatToPay,
                 buttonLabel: context.localization.paymentDetailsDebtPayment,
                 buttonNotifier: _buttonNotifier,
                 onPress: () {
                   context.pop();
                   context.push(
                     '${AppRoute.home.path}/${AppRoute.payment.path}',
+                    extra: true,
                   );
                 },
                 whenComplete: () => _buttonNotifier.value = false,
