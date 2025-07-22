@@ -22,7 +22,7 @@ class AmountText extends StatelessWidget {
             text:
                 ' ${amount.formatToString()} ${context.localization.currencyGel} ',
             style: context.skapiTextStyles.tinyText.copyWith(
-              fontWeight: FontWeight.w900,
+              fontWeight: FontWeight.w700,
               color: context.skapiColors.black,
             ),
           ),

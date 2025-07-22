@@ -45,12 +45,10 @@ flutter:
           weight: 500
         - asset: assets/fonts/helvetica_neue/HelveticaNeue-Roman.otf
           weight: 400
-        - asset: assets/fonts/bpg_gel/BpgGel.ttf
-          weight: 400
 
     - family: BpgGel
       fonts:
-        - asset: assets/fonts/BpgGel.ttf
+        - asset: assets/fonts/bpg_gel/BpgGel.ttf
           weight: 400
 
     - family: notoSansGeorgian
