@@ -45,7 +45,7 @@ make run
 
 In the first 10 hours, I completed the app architecture and design. I then spent a few additional hours finalizing and polishing the full application.
 
-All issues, pull requests, and implementation details are documented in the current pull request.
+All issues, pull requests, and implementation details are documented in the current repository.
 
 There are two branches in the repository:
 
