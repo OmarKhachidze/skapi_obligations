@@ -38,12 +38,17 @@ class SkapiExpandable extends StatelessWidget {
             amount: amount,
           ),
         ),
-        AnimatedCrossFade(
-          firstChild: const SizedBox.shrink(),
-          secondChild: child,
-          crossFadeState:
-              isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+        AnimatedSize(
           duration: const Duration(milliseconds: 250),
+          curve: Curves.easeInOut,
+          alignment: Alignment.topCenter,
+          child: ClipRect(
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 250),
+              opacity: isExpanded ? 1.0 : 0.0,
+              child: isExpanded ? child : const SizedBox.shrink(),
+            ),
+          ),
         ),
       ],
     );

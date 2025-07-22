@@ -37,26 +37,26 @@ class _LoansDetailsSectionState extends State<LoansDetailsSection> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
+        child: Container(
           color: context.skapiColors.white,
-        ),
-        child: ListView.builder(
-          itemCount: widget.upcomingPayment.items.length,
-          itemBuilder: (context, index) {
-            final e = widget.upcomingPayment.items[index];
-            return SkapiExpandable(
-              iconPath: SvgAssets.otherObligations,
-              label: context.localization.obligationsOtherLoans,
-              subLabel: e.paymentDate.toFormattedDate(),
-              amount: e.paymentAmount,
-              days: '',
-              isExpanded: _expandedIndex == index,
-              onToggle: () => _toggleExpansion(index),
-              child: SkapiExpandableContent(upcomingPayment: e),
-            );
-          },
+          child: ListView.builder(
+            itemCount: widget.upcomingPayment.items.length,
+            itemBuilder: (context, index) {
+              final e = widget.upcomingPayment.items[index];
+              return SkapiExpandable(
+                iconPath: SvgAssets.otherObligations,
+                label: context.localization.obligationsOtherLoans,
+                subLabel: e.paymentDate.toFormattedDate(),
+                amount: e.paymentAmount,
+                days: '',
+                isExpanded: _expandedIndex == index,
+                onToggle: () => _toggleExpansion(index),
+                child: SkapiExpandableContent(upcomingPayment: e),
+              );
+            },
+          ),
         ),
       ),
     );

@@ -24,35 +24,39 @@ class ExpandableHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-      decoration: BoxDecoration(
-        color: context.skapiColors.white,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: ClipRRect(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
-        border: !expanded
-            ? Border(
-                bottom: BorderSide(
-                  color: context.skapiColors.grayLight,
-                  width: 1,
-                ),
-              )
-            : null,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 6,
-        children: [
-          Expanded(
-            child: ExpandableTitle(
-              iconPath: iconPath,
-              label: label,
-              subLabel: subLabel,
-              days: days,
-              amount: amount,
-            ),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 12.0),
+          decoration: BoxDecoration(
+            color: context.skapiColors.white,
+            border: !expanded
+                ? Border(
+                    bottom: BorderSide(
+                      color: context.skapiColors.grayLight,
+                      width: 1,
+                    ),
+                  )
+                : null,
           ),
-          ExpandableArrowIcon(expanded: expanded),
-        ],
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: ExpandableTitle(
+                  iconPath: iconPath,
+                  label: label,
+                  subLabel: subLabel,
+                  days: days,
+                  amount: amount,
+                ),
+              ),
+              ExpandableArrowIcon(expanded: expanded),
+            ],
+          ),
+        ),
       ),
     );
   }

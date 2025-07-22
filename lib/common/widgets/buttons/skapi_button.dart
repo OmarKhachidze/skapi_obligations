@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 
+import '../../constants/app_constants.dart';
+
 class SkapiButton extends StatelessWidget {
   const SkapiButton({
     required this.label,
@@ -35,7 +37,9 @@ class SkapiButton extends StatelessWidget {
             child: Text(
               label,
               style: context.skapiTextStyles.buttonPrimary.copyWith(
+                fontFamily: notoSans,
                 fontFeatures: [const FontFeature.caseSensitiveForms()],
+                fontVariations: [const FontVariation('wght', 500)],
                 color: Colors.white,
               ),
             ),
