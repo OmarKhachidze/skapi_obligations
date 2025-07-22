@@ -53,7 +53,7 @@ class SkapiIconButton extends StatelessWidget {
                   style: context.skapiTextStyles.buttonSecondary.copyWith(
                     fontFamily: notoSans,
                     fontFeatures: [const FontFeature.caseSensitiveForms()],
-                    fontVariations: [const FontVariation('wght', 500)],
+                    fontVariations: [const FontVariation('wght', 400)],
                     color: context.skapiColors.primaryDark,
                   ),
                 ),
