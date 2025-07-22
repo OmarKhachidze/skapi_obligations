@@ -209,8 +209,18 @@
     "description": "Title for success screen."
   },
 
-  "successPaymentDescription": "You have successfully paid {amount} ₾ on your gold pawn loan.",
-  "@successPaymentDescription": {
+  "successPaymentGoldDescription": "You have successfully paid {amount} ₾ on your gold loan.",
+  "@successPaymentGoldDescription": {
+    "description": "Amount of money you payed",
+    "placeholders": {
+      "amount": {
+        "type": "Object"
+      }
+    }
+  },
+
+  "successPaymentOtherDescription": "You have successfully paid {amount} ₾ on your 'other' loan.",
+  "@successPaymentOtherDescription": {
     "description": "Amount of money you payed",
     "placeholders": {
       "amount": {

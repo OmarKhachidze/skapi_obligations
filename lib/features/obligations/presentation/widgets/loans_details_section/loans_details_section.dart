@@ -3,15 +3,21 @@ import 'package:skapi_obligations/common/extension/date_formatter_extension.dart
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/features/obligations/domain/models/common_obligation/upcoming_payment.dart';
+import 'package:skapi_obligations/features/obligations/domain/models/common_obligation/upcoming_payment_item.dart';
 
 import '../../../../../common/constants/svg_assets.dart';
 import '../../../../../common/widgets/expandable/skapi_expandable.dart';
 import '../payment_loans/skapi_expandable_content.dart';
 
 class LoansDetailsSection extends StatefulWidget {
-  const LoansDetailsSection({super.key, required this.upcomingPayment});
+  const LoansDetailsSection({
+    super.key,
+    required this.upcomingPayment,
+    required this.onItemChange,
+  });
 
   final UpcomingPayment upcomingPayment;
+  final ValueChanged<UpcomingPaymentItem> onItemChange;
 
   @override
   State<LoansDetailsSection> createState() => _LoansDetailsSectionState();
@@ -25,6 +31,7 @@ class _LoansDetailsSectionState extends State<LoansDetailsSection> {
     setState(() {
       _expandedIndex = index;
     });
+    widget.onItemChange(widget.upcomingPayment.items[_expandedIndex]);
   }
 
   @override

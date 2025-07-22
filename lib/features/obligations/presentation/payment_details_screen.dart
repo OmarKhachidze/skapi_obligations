@@ -16,16 +16,53 @@ import 'package:skapi_obligations/router/app_route.dart';
 
 import '../domain/models/common_obligation/upcoming_payment.dart';
 
-class PaymentDetailsScreen extends StatelessWidget {
+class PaymentDetailsScreen extends StatefulWidget {
   const PaymentDetailsScreen({super.key, this.paymentData = false});
 
   final dynamic paymentData;
 
   @override
+  State<PaymentDetailsScreen> createState() => _PaymentDetailsScreenState();
+}
+
+class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
+  UpcomingPaymentItem? selectedItem;
+  double get paymentAmount => selectedItem?.paymentAmount ?? 0.0;
+
+  bool get isOtherPayment => widget.paymentData is UpcomingPayment;
+  bool get isGoldPayment => widget.paymentData is UpcomingPaymentItem;
+
+  @override
+  void initState() {
+    super.initState();
+    if (isGoldPayment) {
+      selectedItem = widget.paymentData as UpcomingPaymentItem;
+    } else if (isOtherPayment) {
+      selectedItem = (widget.paymentData as UpcomingPayment).items.firstOrNull;
+    }
+  }
+
+  void _showPaymentSheet(BuildContext context) {
+    final description = isGoldPayment
+        ? context.localization.successPaymentGoldDescription(paymentAmount)
+        : context.localization.successPaymentOtherDescription(paymentAmount);
+
+    DefaultBottomSheet(
+      label: context.localization.pay,
+      buttonLabel: context.localization.pay,
+      onPress: () {
+        context.pop();
+        context.replace(
+          '${AppRoute.home.path}/${AppRoute.payment.path}/${AppRoute.success.path}',
+          extra: (description, paymentAmount),
+        );
+      },
+      children: PayContent(amount: paymentAmount),
+    ).show(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final amount = (paymentData is UpcomingPaymentItem)
-        ? (paymentData as UpcomingPaymentItem).paymentAmount
-        : (paymentData as UpcomingPayment).paymentAmount;
     return Scaffold(
       backgroundColor: context.skapiColors.grayLight,
       appBar: InnerAppBar(
@@ -34,33 +71,20 @@ class PaymentDetailsScreen extends StatelessWidget {
       ),
       bottomNavigationBar: ScaffoldButton(
         label: context.localization.pay,
-        onPress: () {
-          DefaultBottomSheet(
-            label: context.localization.pay,
-            buttonLabel: context.localization.pay,
-            onPress: () {
-              context.pop();
-              context.replace(
-                '${AppRoute.home.path}/${AppRoute.payment.path}/${AppRoute.success.path}',
-                extra: (
-                  context.localization.successPaymentDescription(amount),
-                  amount,
-                ),
-              );
-            },
-            children: PayContent(amount: amount),
-          ).show(context);
-        },
+        onPress: () => _showPaymentSheet(context),
       ),
       body: Column(
         children: [
-          BeforePaymentSection(paymentData: paymentData),
+          BeforePaymentSection(paymentData: widget.paymentData),
           const PaymentInfoTextSection(),
           const SizedBox(height: 16.0),
-          if (paymentData is UpcomingPayment)
-            LoansDetailsSection(upcomingPayment: paymentData),
-          if (paymentData is UpcomingPaymentItem)
-            TransactionDetailsGoldSection(upcomingPayment: paymentData),
+          if (isOtherPayment)
+            LoansDetailsSection(
+              upcomingPayment: widget.paymentData,
+              onItemChange: (item) => selectedItem = item,
+            ),
+          if (isGoldPayment)
+            TransactionDetailsGoldSection(upcomingPayment: widget.paymentData),
         ],
       ),
     );
