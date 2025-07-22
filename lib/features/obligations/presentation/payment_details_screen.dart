@@ -26,12 +26,12 @@ class PaymentDetailsScreen extends StatefulWidget {
 }
 
 class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
-  UpcomingPaymentItem? selectedItem;
+  final ValueNotifier<bool> _payButtonNotifier = ValueNotifier(true);
 
+  UpcomingPaymentItem? selectedItem;
   double? get paymentAmount => selectedItem?.paymentAmount;
 
   bool get isOtherPayment => widget.paymentData is UpcomingPayment;
-
   bool get isGoldPayment => widget.paymentData is UpcomingPaymentItem;
 
   @override
@@ -42,6 +42,12 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
     } else if (isOtherPayment) {
       selectedItem = (widget.paymentData as UpcomingPayment).items.firstOrNull;
     }
+  }
+
+  @override
+  void dispose() {
+    _payButtonNotifier.dispose();
+    super.dispose();
   }
 
   void _showPaymentSheet(BuildContext context) {
@@ -57,15 +63,27 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
     DefaultBottomSheet(
       label: context.localization.pay,
       buttonLabel: context.localization.pay,
-      onPress: () {
-        context.pop();
-        context.replace(
-          '${AppRoute.home.path}/${AppRoute.payment.path}/${AppRoute.success.path}',
-          extra: (description, paymentAmount),
-        );
+      buttonNotifier: _payButtonNotifier,
+      loadable: true,
+      onPress: () async {
+        await _simulateSuccessRequest();
+        _navigateToSuccess(description);
       },
       children: PayContent(amount: paymentAmount ?? 0.00),
-    ).show(context);
+    ).show(context, isDismissible: false);
+  }
+
+  Future<void> _simulateSuccessRequest() async {
+    _payButtonNotifier.value = false;
+    await Future.delayed(const Duration(seconds: 2));
+  }
+
+  void _navigateToSuccess(String description) {
+    context.pop();
+    context.replace(
+      '${AppRoute.home.path}/${AppRoute.payment.path}/${AppRoute.success.path}',
+      extra: (description, paymentAmount),
+    );
   }
 
   @override
