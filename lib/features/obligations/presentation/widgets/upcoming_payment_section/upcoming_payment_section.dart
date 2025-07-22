@@ -7,6 +7,8 @@ import 'package:skapi_obligations/common/extension/error_snackbar_extension.dart
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/common/widgets/buttons/skapi_icon_button.dart';
+import 'package:skapi_obligations/features/obligations/domain/models/gold_obligation/gold_customre_data.dart';
+import 'package:skapi_obligations/features/obligations/domain/models/other_obligation/other_customer_data.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/upcoming_payment_section/upcoming_payment_item_widget.dart';
 import 'package:skapi_obligations/router/app_route.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
@@ -22,12 +24,12 @@ import '../../bloc/obligations_state.dart';
 class UpcomingPaymentSection extends StatefulWidget {
   const UpcomingPaymentSection({
     super.key,
-    required this.otherUpcomingPayments,
-    required this.goldUpcomingPayments,
+    required this.otherCustomerData,
+    required this.goldCustomerData,
   });
 
-  final List<UpcomingPaymentItem> otherUpcomingPayments;
-  final List<UpcomingPaymentItem> goldUpcomingPayments;
+  final OtherCustomerData otherCustomerData;
+  final GoldCustomerData goldCustomerData;
 
   @override
   State<UpcomingPaymentSection> createState() => _UpcomingPaymentSectionState();
@@ -35,6 +37,7 @@ class UpcomingPaymentSection extends StatefulWidget {
 
 class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
   final ValueNotifier<bool> _buttonNotifier = ValueNotifier(false);
+  UpcomingPaymentItem? selectedItem;
 
   @override
   void dispose() {
@@ -56,7 +59,7 @@ class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
     ).show(context);
   }
 
-  void _openRadioBottomSheet() {
+  void _openRadioBottomSheet(List<UpcomingPaymentItem> upcomingPaymentItems) {
     DefaultBottomSheet(
       label: context.localization.paymentDetailsChooseWhatToPay,
       buttonLabel: context.localization.paymentDetailsDebtPayment,
@@ -65,13 +68,17 @@ class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
         context.pop();
         context.push(
           '${AppRoute.home.path}/${AppRoute.payment.path}',
-          extra: true,
+          extra: selectedItem,
         );
       },
-      whenComplete: () => _buttonNotifier.value = false,
+      whenComplete: () {
+        selectedItem = null;
+        _buttonNotifier.value = false;
+      },
       children: SkapiRadioButton(
-        items: const [],
+        items: upcomingPaymentItems,
         onChange: (item) {
+          selectedItem = item;
           _buttonNotifier.value = true;
         },
       ),
@@ -101,29 +108,28 @@ class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
               ),
             ),
           ),
-          ...widget.otherUpcomingPayments.map(
-            (e) => UpcomingPaymentItemWidget(
-              label: context.localization.obligationsOtherLoans,
-              iconPath: SvgAssets.otherObligations,
-              days: e.remainingDays,
-              amount: e.paymentAmount,
-              hasPassed: e.expired,
-              onPress: () {
-                context.push('${AppRoute.home.path}/${AppRoute.payment.path}');
-              },
-            ),
+          UpcomingPaymentItemWidget(
+            label: context.localization.obligationsOtherLoans,
+            iconPath: SvgAssets.otherObligations,
+            days: widget.otherCustomerData.upcoming.remainingDays,
+            amount: widget.otherCustomerData.upcoming.paymentAmount,
+            hasPassed: widget.otherCustomerData.upcoming.expired,
+            onPress: () {
+              context.push(
+                '${AppRoute.home.path}/${AppRoute.payment.path}',
+                extra: widget.otherCustomerData.upcoming,
+              );
+            },
           ),
-          ...widget.goldUpcomingPayments.map(
-            (e) => UpcomingPaymentItemWidget(
-              label: context.localization.obligationsGoldLoan,
-              iconPath: SvgAssets.goldObligations,
-              days: e.remainingDays,
-              amount: e.paymentAmount,
-              hasPassed: e.expired,
-              onPress: () {
-                _openRadioBottomSheet();
-              },
-            ),
+          UpcomingPaymentItemWidget(
+            label: context.localization.obligationsGoldLoan,
+            iconPath: SvgAssets.goldObligations,
+            days: widget.goldCustomerData.upcoming.remainingDays,
+            amount: widget.goldCustomerData.upcoming.paymentAmount,
+            hasPassed: widget.goldCustomerData.upcoming.expired,
+            onPress: () {
+              _openRadioBottomSheet(widget.goldCustomerData.upcoming.items);
+            },
           ),
           BlocConsumer<ObligationsBloc, ObligationsData>(
             listener: (context, state) {

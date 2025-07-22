@@ -209,8 +209,18 @@
     "description": "Title for success screen."
   },
 
-  "successPaymentDescription": "შენ წარმატებით გადაიხადე {amount} ოქროს ლომბარდის სესხზე",
-  "@successPaymentDescription": {
+  "successPaymentGoldDescription": "შენ წარმატებით გადაიხადე {amount} ოქროს ლომბარდის სესხზე",
+  "@successPaymentGoldDescription": {
+    "description": "Amount of money you payed",
+    "placeholders": {
+      "amount": {
+        "type": "Object"
+      }
+    }
+  },
+
+  "successPaymentOtherDescription": "შენ წარმატებით გადაიხადე {amount} 'სხვა' სესხზე",
+  "@successPaymentOtherDescription": {
     "description": "Amount of money you payed",
     "placeholders": {
       "amount": {

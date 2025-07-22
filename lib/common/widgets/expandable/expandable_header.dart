@@ -29,6 +29,14 @@ class ExpandableHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.skapiColors.white,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
+        border: !expanded
+            ? Border(
+                bottom: BorderSide(
+                  color: context.skapiColors.grayLight,
+                  width: 1,
+                ),
+              )
+            : null,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

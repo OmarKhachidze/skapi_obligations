@@ -6,6 +6,7 @@ import 'package:skapi_obligations/common/extension/theme_extension.dart';
 import 'package:skapi_obligations/common/widgets/appbars/inner_appbar.dart';
 import 'package:skapi_obligations/common/widgets/bottom_sheets/skapi_bottom_sheet.dart';
 import 'package:skapi_obligations/common/widgets/buttons/scaffold_button.dart';
+import 'package:skapi_obligations/features/obligations/domain/models/common_obligation/upcoming_payment_item.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/before_payment_section/before_payment_section.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/loans_details_section/loans_details_section.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/pay_content/pay_content.dart';
@@ -13,10 +14,52 @@ import 'package:skapi_obligations/features/obligations/presentation/widgets/paym
 import 'package:skapi_obligations/features/obligations/presentation/widgets/transaction_details_gold_section/transaction_details_gold_section.dart';
 import 'package:skapi_obligations/router/app_route.dart';
 
-class PaymentDetailsScreen extends StatelessWidget {
-  const PaymentDetailsScreen({super.key, this.goldObligation = false});
+import '../domain/models/common_obligation/upcoming_payment.dart';
 
-  final bool goldObligation;
+class PaymentDetailsScreen extends StatefulWidget {
+  const PaymentDetailsScreen({super.key, this.paymentData = false});
+
+  final dynamic paymentData;
+
+  @override
+  State<PaymentDetailsScreen> createState() => _PaymentDetailsScreenState();
+}
+
+class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
+  UpcomingPaymentItem? selectedItem;
+  double get paymentAmount => selectedItem?.paymentAmount ?? 0.0;
+
+  bool get isOtherPayment => widget.paymentData is UpcomingPayment;
+  bool get isGoldPayment => widget.paymentData is UpcomingPaymentItem;
+
+  @override
+  void initState() {
+    super.initState();
+    if (isGoldPayment) {
+      selectedItem = widget.paymentData as UpcomingPaymentItem;
+    } else if (isOtherPayment) {
+      selectedItem = (widget.paymentData as UpcomingPayment).items.firstOrNull;
+    }
+  }
+
+  void _showPaymentSheet(BuildContext context) {
+    final description = isGoldPayment
+        ? context.localization.successPaymentGoldDescription(paymentAmount)
+        : context.localization.successPaymentOtherDescription(paymentAmount);
+
+    DefaultBottomSheet(
+      label: context.localization.pay,
+      buttonLabel: context.localization.pay,
+      onPress: () {
+        context.pop();
+        context.replace(
+          '${AppRoute.home.path}/${AppRoute.payment.path}/${AppRoute.success.path}',
+          extra: (description, paymentAmount),
+        );
+      },
+      children: PayContent(amount: paymentAmount),
+    ).show(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,27 +71,20 @@ class PaymentDetailsScreen extends StatelessWidget {
       ),
       bottomNavigationBar: ScaffoldButton(
         label: context.localization.pay,
-        onPress: () {
-          DefaultBottomSheet(
-            label: context.localization.pay,
-            buttonLabel: context.localization.pay,
-            onPress: () {
-              context.pop();
-              context.replace(
-                '${AppRoute.home.path}/${AppRoute.payment.path}/${AppRoute.success.path}',
-              );
-            },
-            children: const PayContent(amount: 541.05),
-          ).show(context);
-        },
+        onPress: () => _showPaymentSheet(context),
       ),
       body: Column(
         children: [
-          const BeforePaymentSection(),
+          BeforePaymentSection(paymentData: widget.paymentData),
           const PaymentInfoTextSection(),
           const SizedBox(height: 16.0),
-          if (!goldObligation) const LoansDetailsSection(),
-          if (goldObligation) const TransactionDetailsGoldSection(),
+          if (isOtherPayment)
+            LoansDetailsSection(
+              upcomingPayment: widget.paymentData,
+              onItemChange: (item) => selectedItem = item,
+            ),
+          if (isGoldPayment)
+            TransactionDetailsGoldSection(upcomingPayment: widget.paymentData),
         ],
       ),
     );

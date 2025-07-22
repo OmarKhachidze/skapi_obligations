@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
-import 'package:skapi_obligations/common/extension/number_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
+import 'package:skapi_obligations/common/widgets/text_form/skapi_text_form.dart';
 
-import '../../../../../common/constants/svg_assets.dart';
-
-class PayContent extends StatelessWidget {
+class PayContent extends StatefulWidget {
   const PayContent({required this.amount, super.key});
 
   final double amount;
+
+  @override
+  State<PayContent> createState() => _PayContentState();
+}
+
+class _PayContentState extends State<PayContent> {
+  final _textController = TextEditingController();
+
+  @override
+  void initState() {
+    _textController.text = '${widget.amount}';
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,33 +40,7 @@ class PayContent extends StatelessWidget {
             color: context.skapiColors.grayDark,
           ),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
-          decoration: BoxDecoration(
-            color: context.skapiColors.grayVeryLight,
-            borderRadius: BorderRadius.circular(6.0),
-            border: Border.all(color: context.skapiColors.grayLight),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            spacing: 10,
-            children: [
-              Text(
-                amount.formatToString(),
-                style: context.skapiTextStyles.h3.copyWith(
-                  color: context.skapiColors.black,
-                ),
-              ),
-              SvgPicture.asset(
-                SvgAssets.gelSymbol,
-                colorFilter: ColorFilter.mode(
-                  context.skapiColors.grayMedium,
-                  BlendMode.srcIn,
-                ),
-              ),
-            ],
-          ),
-        ),
+        SkapiTextForm(textEditingController: _textController, enabled: false),
       ],
     );
   }

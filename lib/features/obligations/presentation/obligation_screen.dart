@@ -51,8 +51,8 @@ class _ObligationScreenState extends State<ObligationScreen> {
         },
         builder: (context, state) {
           final isInitialLoading =
-              (state.isLoadingOther && state.otherObligations == null) ||
-              (state.isLoadingGold && state.goldObligations == null);
+              (state.isLoadingOther || state.otherObligations == null) ||
+              (state.isLoadingGold || state.goldObligations == null);
 
           if (isInitialLoading) {
             return Center(
@@ -71,10 +71,8 @@ class _ObligationScreenState extends State<ObligationScreen> {
                     state.otherObligations?.transitBalance.toDouble() ?? 0.00,
               ),
               UpcomingPaymentSection(
-                otherUpcomingPayments:
-                    state.otherObligations?.upcoming.items ?? [],
-                goldUpcomingPayments:
-                    state.goldObligations?.upcoming.items ?? [],
+                otherCustomerData: state.otherObligations!,
+                goldCustomerData: state.goldObligations!,
               ),
             ],
           );

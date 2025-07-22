@@ -21,7 +21,11 @@ class UpcomingPaymentPayDayText extends StatelessWidget {
       text: TextSpan(
         text: label,
         style:
-            textStyle ??
+            textStyle?.copyWith(
+              color: hasPassed
+                  ? context.skapiColors.error
+                  : context.skapiColors.grayDark,
+            ) ??
             context.skapiTextStyles.tinyText.copyWith(
               fontWeight: FontWeight.w400,
               fontSize: 11,
@@ -34,7 +38,12 @@ class UpcomingPaymentPayDayText extends StatelessWidget {
           TextSpan(
             text: ' $days',
             style:
-                textStyle?.copyWith(fontWeight: FontWeight.w900) ??
+                textStyle?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  color: hasPassed
+                      ? context.skapiColors.error
+                      : context.skapiColors.grayDark,
+                ) ??
                 context.skapiTextStyles.tinyText.copyWith(
                   fontWeight: FontWeight.w900,
                   fontSize: 11,

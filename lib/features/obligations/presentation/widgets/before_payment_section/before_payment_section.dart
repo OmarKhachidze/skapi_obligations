@@ -4,12 +4,17 @@ import 'package:skapi_obligations/features/obligations/presentation/widgets/befo
 import 'before_payment_description.dart';
 
 class BeforePaymentSection extends StatelessWidget {
-  const BeforePaymentSection({super.key});
+  const BeforePaymentSection({super.key, required this.paymentData});
+
+  final dynamic paymentData;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [BeforePaymentDescription(), BeforePaymentPaymentAmount()],
+    return Column(
+      children: [
+        const BeforePaymentDescription(),
+        BeforePaymentPaymentAmount(paymentData: paymentData),
+      ],
     );
   }
 }
