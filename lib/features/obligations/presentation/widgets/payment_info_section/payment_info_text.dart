@@ -17,7 +17,7 @@ class PaymentInfoText extends StatelessWidget {
           TextSpan(
             text: context.localization.paymentDetailsBeforePaymentInfoNumber,
             style: context.skapiTextStyles.tinyText.copyWith(
-              fontWeight: FontWeight.w900,
+              fontWeight: FontWeight.w700,
               color: context.skapiColors.error,
             ),
           ),

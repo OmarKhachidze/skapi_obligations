@@ -39,13 +39,13 @@ class UpcomingPaymentPayDayText extends StatelessWidget {
             text: ' $days',
             style:
                 textStyle?.copyWith(
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                   color: hasPassed
                       ? context.skapiColors.error
                       : context.skapiColors.grayDark,
                 ) ??
                 context.skapiTextStyles.tinyText.copyWith(
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                   fontSize: 11,
                   height: 16 / 11,
                   color: hasPassed
