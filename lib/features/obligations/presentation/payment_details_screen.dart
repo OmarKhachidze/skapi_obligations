@@ -8,10 +8,13 @@ import 'package:skapi_obligations/common/widgets/bottom_sheets/skapi_bottom_shee
 import 'package:skapi_obligations/common/widgets/buttons/scaffold_button.dart';
 import 'package:skapi_obligations/features/obligations/domain/models/common_obligation/upcoming_payment_item.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/before_payment_section/before_payment_section.dart';
+import 'package:skapi_obligations/features/obligations/presentation/widgets/loans_details_section/loans_details_section.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/pay_content/pay_content.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/payment_info_section/payment_info_text_section.dart';
 import 'package:skapi_obligations/features/obligations/presentation/widgets/transaction_details_gold_section/transaction_details_gold_section.dart';
 import 'package:skapi_obligations/router/app_route.dart';
+
+import '../domain/models/common_obligation/upcoming_payment.dart';
 
 class PaymentDetailsScreen extends StatelessWidget {
   const PaymentDetailsScreen({super.key, this.paymentData = false});
@@ -22,7 +25,7 @@ class PaymentDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final amount = (paymentData is UpcomingPaymentItem)
         ? (paymentData as UpcomingPaymentItem).paymentAmount
-        : 123.0;
+        : (paymentData as UpcomingPayment).paymentAmount;
     return Scaffold(
       backgroundColor: context.skapiColors.grayLight,
       appBar: InnerAppBar(
@@ -51,10 +54,11 @@ class PaymentDetailsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const BeforePaymentSection(),
+          BeforePaymentSection(paymentData: paymentData),
           const PaymentInfoTextSection(),
           const SizedBox(height: 16.0),
-          // if (!goldObligation) const LoansDetailsSection(),
+          if (paymentData is UpcomingPayment)
+            LoansDetailsSection(upcomingPayment: paymentData),
           if (paymentData is UpcomingPaymentItem)
             TransactionDetailsGoldSection(upcomingPayment: paymentData),
         ],

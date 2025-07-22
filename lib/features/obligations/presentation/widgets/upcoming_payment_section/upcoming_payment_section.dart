@@ -115,7 +115,10 @@ class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
             amount: widget.otherCustomerData.upcoming.paymentAmount,
             hasPassed: widget.otherCustomerData.upcoming.expired,
             onPress: () {
-              context.push('${AppRoute.home.path}/${AppRoute.payment.path}');
+              context.push(
+                '${AppRoute.home.path}/${AppRoute.payment.path}',
+                extra: widget.otherCustomerData.upcoming,
+              );
             },
           ),
           UpcomingPaymentItemWidget(

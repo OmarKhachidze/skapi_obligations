@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'expandable_header.dart';
 
-class SkapiExpandable extends StatefulWidget {
+class SkapiExpandable extends StatelessWidget {
   const SkapiExpandable({
     super.key,
     required this.child,
@@ -10,7 +10,8 @@ class SkapiExpandable extends StatefulWidget {
     required this.subLabel,
     required this.days,
     required this.amount,
-    this.initiallyExpanded = false,
+    required this.isExpanded,
+    required this.onToggle,
   });
 
   final Widget child;
@@ -19,77 +20,30 @@ class SkapiExpandable extends StatefulWidget {
   final String subLabel;
   final String days;
   final double amount;
-  final bool initiallyExpanded;
-
-  @override
-  State<SkapiExpandable> createState() => _SkapiExpandableState();
-}
-
-class _SkapiExpandableState extends State<SkapiExpandable>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<Offset> _slideAnimation;
-  late bool _isExpanded;
-
-  @override
-  void initState() {
-    super.initState();
-    _isExpanded = widget.initiallyExpanded;
-
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 250),
-    );
-
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, -0.05), // starts slightly above
-      end: Offset.zero,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-
-    if (_isExpanded) {
-      _controller.value = 1;
-    }
-  }
-
-  void _toggleExpanded() {
-    setState(() {
-      _isExpanded = !_isExpanded;
-      if (_isExpanded) {
-        _controller.forward();
-      } else {
-        _controller.reverse();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  final bool isExpanded;
+  final VoidCallback onToggle;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         GestureDetector(
-          onTap: _toggleExpanded,
+          onTap: onToggle,
           child: ExpandableHeader(
-            expanded: _isExpanded,
-            iconPath: widget.iconPath,
-            label: widget.label,
-            subLabel: widget.subLabel,
-            days: widget.days,
-            amount: widget.amount,
+            expanded: isExpanded,
+            iconPath: iconPath,
+            label: label,
+            subLabel: subLabel,
+            days: days,
+            amount: amount,
           ),
         ),
-        SizeTransition(
-          sizeFactor: _controller,
-          axisAlignment: 1.0, // collapses upwards when hiding
-          child: SlideTransition(
-            position: _slideAnimation,
-            child: widget.child,
-          ),
+        AnimatedCrossFade(
+          firstChild: const SizedBox.shrink(),
+          secondChild: child,
+          crossFadeState:
+              isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+          duration: const Duration(milliseconds: 250),
         ),
       ],
     );
