@@ -12,6 +12,7 @@ class DefaultBottomSheet extends StatelessWidget {
     required this.buttonLabel,
     required this.onPress,
     this.buttonNotifier,
+    this.loadable = false,
     this.whenComplete,
   });
 
@@ -20,38 +21,50 @@ class DefaultBottomSheet extends StatelessWidget {
   final String buttonLabel;
   final VoidCallback onPress;
   final ValueNotifier<bool>? buttonNotifier;
+  final bool loadable;
   final VoidCallback? whenComplete;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: context.skapiColors.white,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(16.0)),
+    return ValueListenableBuilder(
+      valueListenable: buttonNotifier ?? ValueNotifier(false),
+      child: ScaffoldButton(
+        label: buttonLabel,
+        onPress: onPress,
+        buttonNotifier: buttonNotifier,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SkapiBottomSheetHeader(
-            label: label,
-            onClosePress: () {
-              context.pop();
-            },
+      builder: (context, buttonEnabled, child) {
+        return Container(
+          decoration: BoxDecoration(
+            color: context.skapiColors.white,
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(16.0),
+            ),
           ),
-          Padding(padding: const EdgeInsets.all(20.0), child: children),
-          ScaffoldButton(
-            label: buttonLabel,
-            onPress: onPress,
-            buttonNotifier: buttonNotifier,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SkapiBottomSheetHeader(
+                label: label,
+                onClosePress: () {
+                  if (loadable && !buttonEnabled) return;
+                  context.pop();
+                },
+              ),
+              Padding(padding: const EdgeInsets.all(20.0), child: children),
+              child ?? const SizedBox.shrink(),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  void show(BuildContext context) {
+  void show(BuildContext context, {bool isDismissible = true}) {
     showModalBottomSheet(
+      isDismissible: isDismissible,
+      enableDrag: isDismissible,
       context: context,
       useRootNavigator: true,
       isScrollControlled: true,
