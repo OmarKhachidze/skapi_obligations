@@ -41,14 +41,18 @@ flutter:
   fonts:
     - family: HelveticaNeue
       fonts:
-        - asset: assets/fonts/HelveticaNeue-Medium.otf
+        - asset: assets/fonts/helvetica_neue/HelveticaNeue-Medium.otf
           weight: 500
-        - asset: assets/fonts/HelveticaNeue-Roman.otf
+        - asset: assets/fonts/helvetica_neue/HelveticaNeue-Roman.otf
           weight: 400
-        - asset: assets/fonts/BpgGel.ttf
+        - asset: assets/fonts/bpg_gel/BpgGel.ttf
           weight: 400
 
     - family: BpgGel
       fonts:
         - asset: assets/fonts/BpgGel.ttf
           weight: 400
+
+    - family: notoSansGeorgian
+      fonts:
+        - asset: assets/fonts/noto_sans_georgian/NotoSansGeorgian.ttf

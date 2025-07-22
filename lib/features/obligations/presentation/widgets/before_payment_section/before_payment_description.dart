@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
 
+import '../../../../../common/constants/app_constants.dart';
+
 class BeforePaymentDescription extends StatelessWidget {
   const BeforePaymentDescription({super.key});
 
@@ -23,7 +25,9 @@ class BeforePaymentDescription extends StatelessWidget {
             context.localization.paymentDetailsBeforePayment,
             overflow: TextOverflow.ellipsis,
             style: context.skapiTextStyles.h3.copyWith(
+              fontFamily: notoSans,
               fontFeatures: [const FontFeature.caseSensitiveForms()],
+              fontVariations: [const FontVariation('wght', 500)],
               color: context.skapiColors.black,
             ),
           ),

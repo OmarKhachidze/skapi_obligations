@@ -9,6 +9,7 @@ import 'package:skapi_obligations/common/widgets/buttons/scaffold_button.dart';
 import 'package:skapi_obligations/common/widgets/text/amount_text.dart';
 import 'package:skapi_obligations/router/app_route.dart';
 
+import '../constants/app_constants.dart';
 import '../constants/svg_assets.dart';
 
 class SuccessScreen extends StatelessWidget {
@@ -66,6 +67,9 @@ class SuccessScreen extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
               style: context.skapiTextStyles.h3.copyWith(
+                fontFamily: notoSans,
+                fontFeatures: [const FontFeature.caseSensitiveForms()],
+                fontVariations: [const FontVariation('wght', 500)],
                 color: context.skapiColors.black,
               ),
             ),

@@ -27,9 +27,11 @@ class PaymentDetailsScreen extends StatefulWidget {
 
 class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
   UpcomingPaymentItem? selectedItem;
-  double get paymentAmount => selectedItem?.paymentAmount ?? 0.0;
+
+  double? get paymentAmount => selectedItem?.paymentAmount;
 
   bool get isOtherPayment => widget.paymentData is UpcomingPayment;
+
   bool get isGoldPayment => widget.paymentData is UpcomingPaymentItem;
 
   @override
@@ -43,9 +45,14 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
   }
 
   void _showPaymentSheet(BuildContext context) {
+    if (paymentAmount == null) return;
     final description = isGoldPayment
-        ? context.localization.successPaymentGoldDescription(paymentAmount)
-        : context.localization.successPaymentOtherDescription(paymentAmount);
+        ? context.localization.successPaymentGoldDescription(
+            paymentAmount ?? 0.00,
+          )
+        : context.localization.successPaymentOtherDescription(
+            paymentAmount ?? 0.00,
+          );
 
     DefaultBottomSheet(
       label: context.localization.pay,
@@ -57,7 +64,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
           extra: (description, paymentAmount),
         );
       },
-      children: PayContent(amount: paymentAmount),
+      children: PayContent(amount: paymentAmount ?? 0.00),
     ).show(context);
   }
 

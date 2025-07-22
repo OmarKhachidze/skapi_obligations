@@ -13,6 +13,7 @@ import 'package:skapi_obligations/features/obligations/presentation/widgets/upco
 import 'package:skapi_obligations/router/app_route.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
+import '../../../../../common/constants/app_constants.dart';
 import '../../../../../common/constants/svg_assets.dart';
 import '../../../../../common/widgets/bottom_sheets/skapi_bottom_sheet.dart';
 import '../../../../../common/widgets/radio_button/skapi_radio_button.dart';
@@ -103,7 +104,9 @@ class _UpcomingPaymentSectionState extends State<UpcomingPaymentSection> {
             child: Text(
               context.localization.obligationsUpcomingPayments,
               style: context.skapiTextStyles.h3.copyWith(
+                fontFamily: notoSans,
                 fontFeatures: [const FontFeature.caseSensitiveForms()],
+                fontVariations: [const FontVariation('wght', 500)],
                 color: context.skapiColors.black,
               ),
             ),

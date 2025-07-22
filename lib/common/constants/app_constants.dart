@@ -21,3 +21,8 @@ const goldObligationsEndpoint = '/obligations/gold';
 const obligationsTransactionsEndpoint = '/obligations/transactions';
 const connectTimeout = Duration(seconds: 20);
 const receiveTimeout = Duration(seconds: 15);
+
+// Fonts
+const helvetica = 'HelveticaNeue';
+const bpgGel = 'BpgGel';
+const notoSans = 'notoSansGeorgian';

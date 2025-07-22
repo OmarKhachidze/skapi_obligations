@@ -1,5 +1,4 @@
 class GoldLoan {
-
   GoldLoan({
     required this.accountNumber,
     required this.issueAmount,
@@ -22,6 +21,8 @@ class GoldLoan {
     this.secondMonthPay30,
     this.secondMonthPay31,
     required this.percAmount,
+
+    // ignore: non_constant_identifier_names
     required this.fine_amount,
   });
 
@@ -51,6 +52,7 @@ class GoldLoan {
       fine_amount: (json['fine_amount'] ?? 0).toDouble(),
     );
   }
+
   final String accountNumber;
   final double issueAmount;
   final double principalAmount;
@@ -72,5 +74,7 @@ class GoldLoan {
   final double? secondMonthPay30;
   final double? secondMonthPay31;
   final double percAmount;
+
+  // ignore: non_constant_identifier_names
   final double fine_amount;
 }
