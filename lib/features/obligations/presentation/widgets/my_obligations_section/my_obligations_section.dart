@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:skapi_obligations/common/constants/app_constants.dart';
 import 'package:skapi_obligations/common/extension/localization_extension.dart';
 import 'package:skapi_obligations/common/extension/theme_extension.dart';
+import 'package:skapi_obligations/common/extension/uppercase_font_extension.dart';
 
 import '../../../../../common/widgets/money_text/money_text.dart';
 
@@ -22,11 +22,8 @@ class MyObligationsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            context.localization.obligationsMyObligations,
+            context.localization.obligationsMyObligations.toGeorgianUpperCase(),
             style: context.skapiTextStyles.h3.copyWith(
-              fontFamily: notoSans,
-              fontFeatures: [const FontFeature.caseSensitiveForms()],
-              fontVariations: [const FontVariation('wght', 500)],
               color: context.skapiColors.grayDark,
             ),
           ),
